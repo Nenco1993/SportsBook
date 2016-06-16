@@ -6,23 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
 import android.widget.*;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
-import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-import dataFromServer.AllSportsBooks;
-import dataFromServer.HomeTab;
+import dataFromServer.MyApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    MyApplication app;
+
+    private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
+    List<String> ids=new ArrayList<String>();
+    List<String> newNames=new ArrayList<String>();
+    List<String> headeri=new ArrayList<String>();
 
     private TabHost tabHost;
     private ExpandableListView expandableListView;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private HashMap<String, List<String>> childData;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        afterParse();
+
+        app = (MyApplication) getApplication();
+
 
         ivLogo = (ImageView) findViewById(R.id.ivLogoID);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView); //privremeno gone
@@ -60,20 +63,15 @@ public class MainActivity extends AppCompatActivity {
         slika4 = (ImageView) findViewById(R.id.imageView4);
 
 
-
-
-        listviewIspis();
+         listviewIspis();
 
 
         setupTabs();
 
 
-
-
-
         //______________________________library za prikazivanje slika____________________________________
 
-       /* ImageLoaderConfiguration cfg = ImageLoaderConfiguration.createDefault(getApplicationContext());
+        ImageLoaderConfiguration cfg = ImageLoaderConfiguration.createDefault(getApplicationContext());
 
 
         ImageLoader imageLoader = ImageLoader.getInstance();
@@ -85,14 +83,13 @@ public class MainActivity extends AppCompatActivity {
         imageLoader.displayImage(urlSLike, slika);
         imageLoader.displayImage(url2, slika2);
         imageLoader.displayImage(url3, slika3);
-        imageLoader.displayImage(url4, slika4);*/
+        imageLoader.displayImage(url4, slika4);
 
 
         //__________________________________________________________________________________________________
 
 
-
-       // prepareListData();
+        // prepareListData();
 
         //Custom_listview adapter = new Custom_listview(getApplicationContext(), headerData, childData);
 
@@ -141,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //headerData.add(headers.get(0));
-       // headerData.add(headers.get(1));
+        // headerData.add(headers.get(1));
 
 
         // Adding child data
@@ -170,15 +167,66 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, SplashScreen.headers);
+        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
         listView.setAdapter(la);
 
 
     }
 
+    private void afterParse() {
+
+
+        for (String s : app.getIds()) {
+
+
+            i0 = app.getIds().get(0);
+            i1 = app.getIds().get(1);
+            i2 = app.getIds().get(2);
+            i3 = app.getIds().get(3);
+            i4 = app.getIds().get(4);
+            i5 = app.getIds().get(5);
+            i6 = app.getIds().get(6);
+            i7 = app.getIds().get(7);
+            i8 = app.getIds().get(8);
+            i9 = app.getIds().get(9);
+
+
+        }
+
+
+        ids.add(i0);
+        ids.add(i1);
+        ids.add(i2);
+        ids.add(i3);
+        ids.add(i4);
+        ids.add(i5);
+        ids.add(i6);
+        ids.add(i7);
+        ids.add(i8);
+        ids.add(i9);
+
+
+        for (String s2 : app.getNames()) {
+
+
+            newNames.add(s2);
+            header1 = app.getNames().get(0);
+            header2 = app.getNames().get(1);
+
+
+        }
+
+
+        newNames.remove("Top Sportsbooks");
+        newNames.remove("Best Bonuses");
+        headeri.clear();
+        headeri.add(header1);
+        headeri.add(header2);
 
 
 
+
+    }
 
 
 }

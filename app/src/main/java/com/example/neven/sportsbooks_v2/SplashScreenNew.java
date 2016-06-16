@@ -1,57 +1,77 @@
 package com.example.neven.sportsbooks_v2;
 
-
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.WindowManager;
 import dataFromServer.MyApplication;
-import dataFromServer.MySingleton;
 import org.xmlpull.v1.XmlPullParser;
-
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by Neven on 12.6.2016..
- */
-public class XMLHandler {
+public class SplashScreenNew extends AppCompatActivity {
 
-   /* MyApplication app;
-
-
-
-
-    List<String> catchphrase2 = new ArrayList<String>();
-
-    public List<String> getCatchphrase2() {
-        return catchphrase2;
-    }
-
-    public void setCatchphrase2(List<String> catchphrase2) {
-        this.catchphrase2 = catchphrase2;
-    }
 
     private String urlString = null;
-    private AllSportsBooks allSportsBooks;
-    private HomeTab homeTab;
-    private HomeTab.Section section;
-    private List<HomeTab.Section> listOfSections;
-    public static List<String> listOfSportBookIDS = new ArrayList<String>();
-    public static List<String> listOfSportBookNames = new ArrayList<String>();
-    public static HashMap<String, List<String>> listOfSportBookNamesHashMap;
-    public static List<String> listOfCatchPhrases = new ArrayList<String>();
-    public static List<String> listOfPromotions = new ArrayList<String>();
-    public static List<String> listOfPromotionsDetails = new ArrayList<String>();
-    public static List<String> listOFLogos = new ArrayList<String>();
+    private String url = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
+    MyApplication app;
+    List<MyApplication> someList = new ArrayList<MyApplication>();
+    List<MyApplication> newList = new ArrayList<MyApplication>();
 
-
-    public XMLHandler(String urlString) {
+    public SplashScreenNew(String urlString) {
         this.urlString = urlString;
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash_screen_new);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        app = (MyApplication) getApplication();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+
+                    SplashScreenNew object = new SplashScreenNew(url);
+
+                    someList = object.parseXML();
+
+
+                    for (MyApplication appObject : someList) {
+
+
+                        newList.add(appObject);
+
+
+                    }
+
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+
+
+            }
+        }).start();
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+
+    }
+
 
     public List<MyApplication> parseXML() {
 
@@ -105,9 +125,7 @@ public class XMLHandler {
                         if (tagname.equals("homeTab")) {
 
 
-
-
-                            listOfSections = new ArrayList<HomeTab.Section>();
+                            // listOfSections = new ArrayList<HomeTab.Section>();
 
 
                         }
@@ -115,11 +133,11 @@ public class XMLHandler {
                         if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
 
 
-                            section = new HomeTab.Section();
+                            //section = new HomeTab.Section();
 
                             String atrValue = myparser.getAttributeValue(0);
 
-                            section.setSectionType(atrValue);
+                            app.setSectionType(atrValue);
 
 
                         }
@@ -127,7 +145,7 @@ public class XMLHandler {
                         if (tagname.equals("tinyImage ")) {
 
                             String logo = getText;
-                            listOFLogos.add(logo);
+                            app.setLogo(logo);
 
 
                         }
@@ -149,12 +167,9 @@ public class XMLHandler {
 
 
                             String name = getText;
-
-
-                            listOfSportBookNames.add(name);
-
-
-                            section.setName(name);
+                            List<String> listaImena = new ArrayList<String>();
+                            listaImena.add(name);
+                            app.setNames(listaImena);
 
 
                         }
@@ -162,7 +177,9 @@ public class XMLHandler {
                         if (tagname.equals("sportBookID")) {
 
                             String ids = getText;
-                            listOfSportBookIDS.add(ids);
+                            List<String> idevi = new ArrayList<String>();
+                            idevi.add(ids);
+                            app.setIds(idevi);
 
 
                         }
@@ -172,18 +189,16 @@ public class XMLHandler {
 
                             String catchphrase = getText;
 
-                            listOfCatchPhrases.add(catchphrase);
+                            app.setCatchPhrase(catchphrase);
 
 
                         }
 
                         if (tagname.equals("promotion")) {
 
-                            AllSportsBooks books = new AllSportsBooks();
 
                             String promotion = getText;
-                            books.setPromotion(promotion);
-                            listOfPromotions.add(promotion);
+                            app.setPromotion(promotion);
 
 
                         }
@@ -191,13 +206,13 @@ public class XMLHandler {
                         if (tagname.equals("promotionDetails")) {
 
                             String promotiondetails = getText;
-                            listOfPromotionsDetails.add(promotiondetails);
+                            app.setPromotionDetails(promotiondetails);
 
 
                         }
 
 
-                        homeTab.setListOfSections(listOfSections);
+                        // homeTab.setListOfSections(listOfSections);
 
 
                         break;
@@ -213,7 +228,7 @@ public class XMLHandler {
         }
 
         return listOfHomeTab;
-    }*/
+    }
 
 
 }

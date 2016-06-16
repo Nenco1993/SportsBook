@@ -1,12 +1,9 @@
 package com.example.neven.sportsbooks_v2;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.WindowManager;
-import dataFromServer.HomeTab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.List;
  */
 public class SplashScreen extends Activity {
 
-    private XMLHandler objectXMLhandler;
+  /*  private XMLHandler objectXMLhandler;
     public List<HomeTab.Section> randomList;
     public static List<String> names = new ArrayList<String>();
     public static List<String> headers = new ArrayList<String>();
@@ -157,7 +154,7 @@ public class SplashScreen extends Activity {
         headers.add(header2);
 
 
-    }
+    }*/
 
 
 }
