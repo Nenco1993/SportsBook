@@ -1,5 +1,6 @@
 package com.example.neven.sportsbooks_v2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class SplashScreenNew extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         app = (MyApplication) getApplication();
+
 
         new Thread(new Runnable() {
             @Override
