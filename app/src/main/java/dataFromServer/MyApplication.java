@@ -19,7 +19,7 @@ public class MyApplication extends Application {
     List<String> names;
     List<String> ids;
     String logo;
-    String catchPhrase;
+    List<String> catchPhrase;
     String promotion;
     String promotionDetails;
     String sectionType;
@@ -48,11 +48,11 @@ public class MyApplication extends Application {
         this.logo = logo;
     }
 
-    public String getCatchPhrase() {
+    public List<String> getCatchPhrase() {
         return catchPhrase;
     }
 
-    public void setCatchPhrase(String catchPhrase) {
+    public void setCatchPhrase(List<String> catchPhrase) {
         this.catchPhrase = catchPhrase;
     }
 

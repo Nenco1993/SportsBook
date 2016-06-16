@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import dataFromServer.MyApplication;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -22,10 +25,12 @@ public class SplashScreenNew extends AppCompatActivity {
     MyApplication app;
     List<MyApplication> someList = new ArrayList<MyApplication>();
     List<MyApplication> newList = new ArrayList<MyApplication>();
+    public static List<String>listofcatch;
+
 
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
     List<String> ids = new ArrayList<String>();
-    List<String> newNames = new ArrayList<String>();
+    public static List<String> newNames = new ArrayList<String>();
     List<String> headeri = new ArrayList<String>();
 
 
@@ -36,6 +41,9 @@ public class SplashScreenNew extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
 
         app = (MyApplication) getApplication();
 
@@ -50,7 +58,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
                     someList = parseXML();
-                    afterParse();
+                   // afterParse();
 
 
                     for (MyApplication appObject : someList) {
@@ -75,6 +83,9 @@ public class SplashScreenNew extends AppCompatActivity {
 
             }
         }).start();
+
+
+
 
 
     }
@@ -174,9 +185,11 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
                             String name = getText;
+                          //  System.out.println("#!#!#!#!#!#!###!#!#!#!#!*#!*##*!#!*#*!#!*: "+name);
                             List<String> listaImena = new ArrayList<String>();
                             listaImena.add(name);
                             app.setNames(listaImena);
+                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+app.getNames());
 
 
                         }
@@ -196,7 +209,12 @@ public class SplashScreenNew extends AppCompatActivity {
 
                             String catchphrase = getText;
 
-                            app.setCatchPhrase(catchphrase);
+                            listofcatch=new ArrayList<String>();
+                            listofcatch.add(catchphrase);
+
+                            System.out.println("ALL THE CATCHPHRASES: "+catchphrase);
+
+                            app.setCatchPhrase(listofcatch);
 
 
                         }
@@ -214,6 +232,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
                             String promotiondetails = getText;
                             app.setPromotionDetails(promotiondetails);
+                            System.out.println("ALL THE PROMOTION DETAILS: "+app.getPromotionDetails());
 
 
                         }

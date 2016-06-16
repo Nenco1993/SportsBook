@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView slika3;
     private ImageView slika4;
 
+    TextView tv3;
+
 
     private HashMap<String, List<String>> childData;
 
@@ -56,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
         slika2 = (ImageView) findViewById(R.id.imageView2);
         slika3 = (ImageView) findViewById(R.id.imageView3);
         slika4 = (ImageView) findViewById(R.id.imageView4);
+        tv3=(TextView) findViewById(R.id.textView3);
 
 
-        //listviewIspis();
+
+
+        listviewIspis();
 
 
         setupTabs();
@@ -162,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-        //  ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
-        //  listView.setAdapter(la);
+          ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getCatchPhrase());
+          listView.setAdapter(la);
 
 
     }
