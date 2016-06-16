@@ -18,15 +18,17 @@ import java.util.List;
 public class SplashScreenNew extends AppCompatActivity {
 
 
-    private String urlString = null;
-    private String url = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
+    private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
     MyApplication app;
     List<MyApplication> someList = new ArrayList<MyApplication>();
     List<MyApplication> newList = new ArrayList<MyApplication>();
 
-    public SplashScreenNew(String urlString) {
-        this.urlString = urlString;
-    }
+    private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
+    List<String> ids=new ArrayList<String>();
+    List<String> newNames=new ArrayList<String>();
+    List<String> headeri=new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class SplashScreenNew extends AppCompatActivity {
 
         app = (MyApplication) getApplication();
 
+        final ProgressDialog progressDialog=ProgressDialog.show(this,"Please wait...","Downloading data from web",true);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
 
         new Thread(new Runnable() {
             @Override
@@ -45,9 +50,10 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 try {
 
-                    SplashScreenNew object = new SplashScreenNew(url);
+                    Thread.sleep(10000);
+                    someList = parseXML();
+                  //  afterParse();
 
-                    someList = object.parseXML();
 
 
                     for (MyApplication appObject : someList) {
@@ -63,6 +69,8 @@ public class SplashScreenNew extends AppCompatActivity {
 
                     e.printStackTrace();
                 }
+
+                progressDialog.dismiss();
 
 
             }
@@ -230,6 +238,61 @@ public class SplashScreenNew extends AppCompatActivity {
         }
 
         return listOfHomeTab;
+    }
+
+    private void afterParse() {
+
+
+        for (String s : app.getIds()) {
+
+
+            i0 = app.getIds().get(0);
+            i1 = app.getIds().get(1);
+            i2 = app.getIds().get(2);
+            i3 = app.getIds().get(3);
+            i4 = app.getIds().get(4);
+            i5 = app.getIds().get(5);
+            i6 = app.getIds().get(6);
+            i7 = app.getIds().get(7);
+            i8 = app.getIds().get(8);
+            i9 = app.getIds().get(9);
+
+
+        }
+
+
+        ids.add(i0);
+        ids.add(i1);
+        ids.add(i2);
+        ids.add(i3);
+        ids.add(i4);
+        ids.add(i5);
+        ids.add(i6);
+        ids.add(i7);
+        ids.add(i8);
+        ids.add(i9);
+
+
+        for (String s2 : app.getNames()) {
+
+
+            newNames.add(s2);
+            header1 = app.getNames().get(0);
+            header2 = app.getNames().get(1);
+
+
+        }
+
+
+        newNames.remove("Top Sportsbooks");
+        newNames.remove("Best Bonuses");
+        headeri.clear();
+        headeri.add(header1);
+        headeri.add(header2);
+
+
+
+
     }
 
 

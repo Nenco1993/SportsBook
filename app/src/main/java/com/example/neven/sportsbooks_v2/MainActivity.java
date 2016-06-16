@@ -18,10 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     MyApplication app;
 
-    private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
-    List<String> ids=new ArrayList<String>();
-    List<String> newNames=new ArrayList<String>();
-    List<String> headeri=new ArrayList<String>();
+
 
     private TabHost tabHost;
     private ExpandableListView expandableListView;
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        afterParse();
+
 
         app = (MyApplication) getApplication();
 
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         slika4 = (ImageView) findViewById(R.id.imageView4);
 
 
-         listviewIspis();
+         //listviewIspis();
 
 
         setupTabs();
@@ -167,66 +164,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
-        listView.setAdapter(la);
+      //  ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
+      //  listView.setAdapter(la);
 
 
     }
 
-    private void afterParse() {
 
-
-        for (String s : app.getIds()) {
-
-
-            i0 = app.getIds().get(0);
-            i1 = app.getIds().get(1);
-            i2 = app.getIds().get(2);
-            i3 = app.getIds().get(3);
-            i4 = app.getIds().get(4);
-            i5 = app.getIds().get(5);
-            i6 = app.getIds().get(6);
-            i7 = app.getIds().get(7);
-            i8 = app.getIds().get(8);
-            i9 = app.getIds().get(9);
-
-
-        }
-
-
-        ids.add(i0);
-        ids.add(i1);
-        ids.add(i2);
-        ids.add(i3);
-        ids.add(i4);
-        ids.add(i5);
-        ids.add(i6);
-        ids.add(i7);
-        ids.add(i8);
-        ids.add(i9);
-
-
-        for (String s2 : app.getNames()) {
-
-
-            newNames.add(s2);
-            header1 = app.getNames().get(0);
-            header2 = app.getNames().get(1);
-
-
-        }
-
-
-        newNames.remove("Top Sportsbooks");
-        newNames.remove("Best Bonuses");
-        headeri.clear();
-        headeri.add(header1);
-        headeri.add(header2);
-
-
-
-
-    }
 
 
 }
