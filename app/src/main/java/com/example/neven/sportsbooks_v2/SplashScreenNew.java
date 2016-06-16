@@ -24,10 +24,9 @@ public class SplashScreenNew extends AppCompatActivity {
     List<MyApplication> newList = new ArrayList<MyApplication>();
 
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
-    List<String> ids=new ArrayList<String>();
-    List<String> newNames=new ArrayList<String>();
-    List<String> headeri=new ArrayList<String>();
-
+    List<String> ids = new ArrayList<String>();
+    List<String> newNames = new ArrayList<String>();
+    List<String> headeri = new ArrayList<String>();
 
 
     @Override
@@ -40,8 +39,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
         app = (MyApplication) getApplication();
 
-        final ProgressDialog progressDialog=ProgressDialog.show(this,"Please wait...","Downloading data from web",true);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        final ProgressDialog progressDialog = ProgressDialog.show(this, "Please wait...", "Downloading data from web", true);
 
 
         new Thread(new Runnable() {
@@ -50,10 +48,9 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 try {
 
-                    Thread.sleep(10000);
-                    someList = parseXML();
-                  //  afterParse();
 
+                    someList = parseXML();
+                    afterParse();
 
 
                     for (MyApplication appObject : someList) {
@@ -72,12 +69,12 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
 
             }
         }).start();
-
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
 
 
     }
@@ -291,9 +288,11 @@ public class SplashScreenNew extends AppCompatActivity {
         headeri.add(header2);
 
 
-
-
     }
 
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Neven on 15.6.2016..
  */
-public class SplashScreen extends Activity {
+public class SplashScreen_deleteMe extends Activity {
 
   /*  private XMLHandler objectXMLhandler;
     public List<HomeTab.Section> randomList;

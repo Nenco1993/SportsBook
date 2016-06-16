@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     MyApplication app;
 
 
-
     private TabHost tabHost;
     private ExpandableListView expandableListView;
     private ImageView ivLogo;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
         app = (MyApplication) getApplication();
 
 
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         slika4 = (ImageView) findViewById(R.id.imageView4);
 
 
-         //listviewIspis();
+        //listviewIspis();
 
 
         setupTabs();
@@ -164,13 +162,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-      //  ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
-      //  listView.setAdapter(la);
+        //  ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getNames());
+        //  listView.setAdapter(la);
 
 
     }
-
-
 
 
 }

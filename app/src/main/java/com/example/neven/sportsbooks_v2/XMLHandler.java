@@ -20,7 +20,14 @@ import java.util.List;
  */
 public class XMLHandler {
 
-   /* MyApplication app;
+   /*
+
+   OBRISI ME!!!!!!!!!!!  OBRISI ME!!!!!!!!!!!   OBRISI ME!!!!!!!!!!!  OBRISI ME!!!!!!!!!!!  OBRISI ME!!!!!!!!!!!
+
+
+
+
+   MyApplication app;
 
 
 
