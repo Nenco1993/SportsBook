@@ -56,9 +56,11 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 try {
 
-
+                    newList.clear();
                     someList = parseXML();
                    // afterParse();
+
+
 
 
                     for (MyApplication appObject : someList) {

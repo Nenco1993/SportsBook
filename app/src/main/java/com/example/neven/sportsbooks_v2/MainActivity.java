@@ -58,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         slika2 = (ImageView) findViewById(R.id.imageView2);
         slika3 = (ImageView) findViewById(R.id.imageView3);
         slika4 = (ImageView) findViewById(R.id.imageView4);
-        tv3=(TextView) findViewById(R.id.textView3);
-
-
+        tv3 = (TextView) findViewById(R.id.textView3);
 
 
         listviewIspis();
@@ -167,8 +165,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-          ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getCatchPhrase());
-          listView.setAdapter(la);
+        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getCatchPhrase());
+        listView.setAdapter(la);
+        tv3.setText(app.getPromotion());
 
 
     }
