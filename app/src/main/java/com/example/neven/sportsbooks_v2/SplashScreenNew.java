@@ -52,18 +52,20 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 try {
 
-                    newList.clear();
-                    someList = parseXML();
+                  //  newList.clear();
+                   // someList = parseXML();
                     // afterParse();
+                    parseXML();
+                    afterParse();
 
 
-                    for (MyApplication appObject : someList) {
+                   // for (MyApplication appObject : someList) {
 
 
-                        newList.add(appObject);
+                       // newList.add(appObject);
 
 
-                    }
+                   // }
 
 
                 } catch (Exception e) {
@@ -84,9 +86,9 @@ public class SplashScreenNew extends AppCompatActivity {
     }
 
 
-    public List<MyApplication> parseXML() {
+    public void parseXML() {
 
-        List<MyApplication> listOfHomeTab = new ArrayList<MyApplication>();
+        //List<MyApplication> listOfHomeTab = new ArrayList<MyApplication>();
 
 
         int event;
@@ -246,10 +248,12 @@ public class SplashScreenNew extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        return listOfHomeTab;
+      //  return listOfHomeTab;
     }
 
     private void afterParse() {
+
+
 
 
         for (String s : app.getIds()) {
@@ -286,6 +290,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
             newNames.add(s2);
+            System.out.println();
             header1 = app.getNames().get(0);
             header2 = app.getNames().get(1);
 

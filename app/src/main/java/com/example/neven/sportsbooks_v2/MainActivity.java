@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getCatchPhrase());
+        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, SplashScreenNew.newNames);
         listView.setAdapter(la);
         tv3.setText(app.getPromotion());
 
