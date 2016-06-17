@@ -34,13 +34,15 @@ public class SplashScreenNew extends AppCompatActivity {
     public static List<String> newNames = new ArrayList<String>();
     List<String> headeri = new ArrayList<String>();
 
+    public static List<MyApplication> listOfCatches=new ArrayList<MyApplication>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_new);
 
-        appObject = (MyApplication) getApplication();
+
         // appAll= (MyApplication) getApplication();
 
 
@@ -165,6 +167,9 @@ public class SplashScreenNew extends AppCompatActivity {
                     case XmlPullParser.START_TAG:
 
 
+
+
+
                        /* if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
 
 
@@ -221,6 +226,15 @@ public class SplashScreenNew extends AppCompatActivity {
 
                             String catchphrase = getText;
 
+                            appObject.getListOfAllCatches().add(catchphrase);
+
+
+
+
+
+
+
+
 
                             // newList.add(catchphrase);
 
@@ -250,6 +264,8 @@ public class SplashScreenNew extends AppCompatActivity {
 
                         // homeTab.setListOfSections(listOfSections);
                         // listOfHomeTab.add(app);
+
+
 
                         // newList.add(appObject);
 

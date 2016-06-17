@@ -25,7 +25,16 @@ public class MyApplication extends Application {
     String promotion;
     String promotionDetails;
     String sectionType;
+    List<String> listOfAllCatches;
 
+
+    public List<String> getListOfAllCatches() {
+        return listOfAllCatches;
+    }
+
+    public void setListOfAllCatches(List<String> listOfAllCatches) {
+        this.listOfAllCatches = listOfAllCatches;
+    }
 
 
 

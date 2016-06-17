@@ -176,8 +176,8 @@ public class MainActivity extends AppCompatActivity {
     private void listviewIspis() {
 
 
-        //  ListAdapter la = new ArrayAdapter<MyApplication>(this, android.R.layout.simple_list_item_1,lista);
-        // listView.setAdapter(la);
+        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getListOfAllCatches());
+        listView.setAdapter(la);
 
 
     }
