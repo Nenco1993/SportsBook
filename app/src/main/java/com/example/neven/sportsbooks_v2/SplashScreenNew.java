@@ -1,7 +1,10 @@
 package com.example.neven.sportsbooks_v2;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -9,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import dataFromServer.MyApplication;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -25,7 +29,7 @@ public class SplashScreenNew extends AppCompatActivity {
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
     MyApplication app;
     List<MyApplication> someList = new ArrayList<MyApplication>();
-    List<MyApplication> newList = new ArrayList<MyApplication>();
+    public static List<MyApplication> newList = new ArrayList<MyApplication>();
     public static List<String> listofcatch;
 
 
@@ -40,55 +44,82 @@ public class SplashScreenNew extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_new);
 
-
-        app = (MyApplication) getApplication();
-
-        final ProgressDialog progressDialog = ProgressDialog.show(this, "Please wait...", "Downloading data from web", true);
+        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                try {
-
-                  //  newList.clear();
-                   // someList = parseXML();
-                    // afterParse();
-                    parseXML();
-                    afterParse();
+        try {
 
 
-                   // for (MyApplication appObject : someList) {
+            if (activeNetwork.isConnectedOrConnecting()) {
 
 
-                       // newList.add(appObject);
+                final ProgressDialog progressDialog = ProgressDialog.show(this, "Please wait...", "Downloading data from web", true);
 
 
-                   // }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        try {
+
+                            newList.clear();
+                            someList = parseXML();
+                            // afterParse();
+                            //parseXML();
+                            // afterParse();
 
 
-                } catch (Exception e) {
+                            for (MyApplication appObject : someList) {
 
-                    e.printStackTrace();
-                }
 
-                progressDialog.dismiss();
+                                newList.add(appObject);
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+
+                            }
+
+
+                        } catch (Exception e) {
+
+                            e.printStackTrace();
+                        }
+
+                        progressDialog.dismiss();
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
+
+
+                    }
+                }).start();
+
+
+            } else {
+
+                Toast.makeText(SplashScreenNew.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
+                finishAffinity();
 
 
             }
-        }).start();
+
+
+        } catch (Exception e) {
+
+
+            Toast.makeText(SplashScreenNew.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
+            finishAffinity();
+
+
+        }
 
 
     }
 
 
-    public void parseXML() {
+    public List<MyApplication> parseXML() {
 
-        //List<MyApplication> listOfHomeTab = new ArrayList<MyApplication>();
+        List<MyApplication> listOfHomeTab = new ArrayList<MyApplication>();
 
 
         int event;
@@ -133,15 +164,16 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 switch (event) {
                     case XmlPullParser.START_TAG:
+                        app = (MyApplication) getApplication();
 
 
-                        if (tagname.equals("homeTab")) {
+                       /* if (tagname.equals("homeTab")) {
 
 
                             // listOfSections = new ArrayList<HomeTab.Section>();
 
 
-                        }
+                        }*/
 
                         if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
 
@@ -207,9 +239,10 @@ public class SplashScreenNew extends AppCompatActivity {
                             listofcatch = new ArrayList<String>();
                             listofcatch.add(catchphrase);
 
-                            System.out.println("        ALL THE CATCHPHRASES: " + catchphrase);
 
                             app.setCatchPhrase(listofcatch);
+
+                            System.out.println("        ALL THE CATCHPHRASES: " + app.getCatchPhrase());
 
 
                         }
@@ -234,6 +267,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
                         // homeTab.setListOfSections(listOfSections);
+                        listOfHomeTab.add(app);
 
 
                         break;
@@ -248,12 +282,10 @@ public class SplashScreenNew extends AppCompatActivity {
             e.printStackTrace();
         }
 
-      //  return listOfHomeTab;
+        return listOfHomeTab;
     }
 
     private void afterParse() {
-
-
 
 
         for (String s : app.getIds()) {

@@ -1,9 +1,15 @@
 package com.example.neven.sportsbooks_v2;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView slika3;
     private ImageView slika4;
 
+
     TextView tv3;
 
 
@@ -45,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        View parentLayout = findViewById(R.id.rootLayout);
+        Snackbar.make(parentLayout, "Internet connection must be ON at all time", Snackbar.LENGTH_LONG).show();
 
 
         app = (MyApplication) getApplication();
@@ -94,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         // expandableListView.setAdapter(adapter);
 
 
-        Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
+        // Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
 
 
     }
@@ -165,9 +175,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void listviewIspis() {
 
-        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, SplashScreenNew.newNames);
+
+        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getCatchPhrase());
         listView.setAdapter(la);
-        tv3.setText(app.getPromotion());
 
 
     }
