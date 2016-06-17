@@ -27,12 +27,8 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
-    MyApplication app;
-    List<MyApplication> someList = new ArrayList<MyApplication>();
-    public static List<MyApplication> newList = new ArrayList<MyApplication>();
-    public static List<String> listofcatch;
-
-
+    MyApplication appObject;
+    //MyApplication appAll;
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
     List<String> ids = new ArrayList<String>();
     public static List<String> newNames = new ArrayList<String>();
@@ -43,6 +39,10 @@ public class SplashScreenNew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_new);
+
+        appObject = (MyApplication) getApplication();
+        // appAll= (MyApplication) getApplication();
+
 
         ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -63,20 +63,19 @@ public class SplashScreenNew extends AppCompatActivity {
 
                         try {
 
-                            newList.clear();
-                            someList = parseXML();
-                            // afterParse();
-                            //parseXML();
-                            // afterParse();
+                            parseXML();
 
 
-                            for (MyApplication appObject : someList) {
+                           /* List<MyApplication> oldList=parseXML();
+
+                            for (MyApplication app2:oldList){
 
 
-                                newList.add(appObject);
+                              newList.add(app2);
 
 
-                            }
+
+                            }*/
 
 
                         } catch (Exception e) {
@@ -117,9 +116,9 @@ public class SplashScreenNew extends AppCompatActivity {
     }
 
 
-    public List<MyApplication> parseXML() {
+    public void parseXML() {
 
-        List<MyApplication> listOfHomeTab = new ArrayList<MyApplication>();
+        // List<MyApplication> listOfAllStuff = new ArrayList<MyApplication>();
 
 
         int event;
@@ -164,21 +163,10 @@ public class SplashScreenNew extends AppCompatActivity {
 
                 switch (event) {
                     case XmlPullParser.START_TAG:
-                        app = (MyApplication) getApplication();
 
 
-                       /* if (tagname.equals("homeTab")) {
+                       /* if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
 
-
-                            // listOfSections = new ArrayList<HomeTab.Section>();
-
-
-                        }*/
-
-                        if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
-
-
-                            //section = new HomeTab.Section();
 
                             String atrValue = myparser.getAttributeValue(0);
 
@@ -193,7 +181,7 @@ public class SplashScreenNew extends AppCompatActivity {
                             app.setLogo(logo);
 
 
-                        }
+                        }*/
 
 
                         break;
@@ -208,15 +196,13 @@ public class SplashScreenNew extends AppCompatActivity {
 
                     case XmlPullParser.END_TAG:
 
-                        if (tagname.equals("name")) {
+                      /*  if (tagname.equals("name")) {
 
 
                             String name = getText;
-                            //  System.out.println("#!#!#!#!#!#!###!#!#!#!#!*#!*##*!#!*#*!#!*: "+name);
-                            List<String> listaImena = new ArrayList<String>();
-                            listaImena.add(name);
-                            app.setNames(listaImena);
-                            System.out.println("ALL NAMES: " + app.getNames());
+
+
+                            app.setNames(name);
 
 
                         }
@@ -224,30 +210,24 @@ public class SplashScreenNew extends AppCompatActivity {
                         if (tagname.equals("sportBookID")) {
 
                             String ids = getText;
-                            List<String> idevi = new ArrayList<String>();
-                            idevi.add(ids);
-                            app.setIds(idevi);
+
+                            app.setIds(ids);
 
 
-                        }
+                        }*/
 
                         if (tagname.equals("catchPhrase")) {
 
 
                             String catchphrase = getText;
 
-                            listofcatch = new ArrayList<String>();
-                            listofcatch.add(catchphrase);
 
-
-                            app.setCatchPhrase(listofcatch);
-
-                            System.out.println("        ALL THE CATCHPHRASES: " + app.getCatchPhrase());
+                            // newList.add(catchphrase);
 
 
                         }
 
-                        if (tagname.equals("promotion")) {
+                      /*  if (tagname.equals("promotion")) {
 
 
                             String promotion = getText;
@@ -260,14 +240,18 @@ public class SplashScreenNew extends AppCompatActivity {
 
                             String promotiondetails = getText;
                             app.setPromotionDetails(promotiondetails);
-                            System.out.println("                ALL THE PROMOTION DETAILS: " + app.getPromotionDetails());
+                            //   System.out.println("                ALL THE PROMOTION DETAILS: " + app.getPromotionDetails());
 
 
-                        }
+                        }*/
+
+                        //  listOfAllStuff.add(app);
 
 
                         // homeTab.setListOfSections(listOfSections);
-                        listOfHomeTab.add(app);
+                        // listOfHomeTab.add(app);
+
+                        // newList.add(appObject);
 
 
                         break;
@@ -282,10 +266,10 @@ public class SplashScreenNew extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        return listOfHomeTab;
+        // return listOfAllStuff;
     }
 
-    private void afterParse() {
+ /*   private void afterParse() {
 
 
         for (String s : app.getIds()) {
@@ -337,11 +321,7 @@ public class SplashScreenNew extends AppCompatActivity {
         headeri.add(header2);
 
 
-    }
+    }*/
 
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-    }
 }

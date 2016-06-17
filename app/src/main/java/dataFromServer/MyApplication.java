@@ -3,6 +3,7 @@ package dataFromServer;
 import android.app.Application;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,28 +17,32 @@ public class MyApplication extends Application {
         MySingleton.getInstance();
     }
 
-    List<String> names;
-    List<String> ids;
+
     String logo;
-    List<String> catchPhrase;
+    String names;
+    String ids;
+    String catchPhrase;
     String promotion;
     String promotionDetails;
     String sectionType;
 
-    public List<String> getNames() {
-        return names;
-    }
 
-    public void setNames(List<String> names) {
-        this.names = names;
-    }
 
-    public List<String> getIds() {
+
+    public String getIds() {
         return ids;
     }
 
-    public void setIds(List<String> ids) {
+    public void setIds(String ids) {
         this.ids = ids;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+        this.names = names;
     }
 
     public String getLogo() {
@@ -48,11 +53,11 @@ public class MyApplication extends Application {
         this.logo = logo;
     }
 
-    public List<String> getCatchPhrase() {
+    public String getCatchPhrase() {
         return catchPhrase;
     }
 
-    public void setCatchPhrase(List<String> catchPhrase) {
+    public void setCatchPhrase(String catchPhrase) {
         this.catchPhrase = catchPhrase;
     }
 
@@ -79,6 +84,11 @@ public class MyApplication extends Application {
 
     public void setSectionType(String sectionType) {
         this.sectionType = sectionType;
+    }
+
+    @Override
+    public String toString() {
+        return catchPhrase;
     }
 }
 
