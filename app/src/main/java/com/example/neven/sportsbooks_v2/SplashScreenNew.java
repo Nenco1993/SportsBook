@@ -27,14 +27,14 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
-    MyApplication appObject;
-    //MyApplication appAll;
+    MyApplication db;
+
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
     List<String> ids = new ArrayList<String>();
     public static List<String> newNames = new ArrayList<String>();
     List<String> headeri = new ArrayList<String>();
 
-    public static List<MyApplication> listOfCatches=new ArrayList<MyApplication>();
+    public static List<String> listOfCatches=new ArrayList<String>();
 
 
     @Override
@@ -42,8 +42,10 @@ public class SplashScreenNew extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_new);
 
+        db=(MyApplication) getApplication();
 
-        // appAll= (MyApplication) getApplication();
+
+
 
 
         ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -225,8 +227,9 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
                             String catchphrase = getText;
+                            listOfCatches.add(catchphrase);
+                           // db.getListOfAllCatches().add(catchphrase);
 
-                            appObject.getListOfAllCatches().add(catchphrase);
 
 
 
