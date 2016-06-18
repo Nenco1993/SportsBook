@@ -27,14 +27,18 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
-    MyApplication db;
-
+    private MyApplication db;
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
-    List<String> ids = new ArrayList<String>();
-    public static List<String> newNames = new ArrayList<String>();
-    List<String> headeri = new ArrayList<String>();
-
-     private List<String> listOfCatches=new ArrayList<String>();
+    private List<String> ids = new ArrayList<String>();
+    private List<String> newNames = new ArrayList<String>();
+    private List<String> headeri = new ArrayList<String>();
+    private List<String> listOfCatches = new ArrayList<String>();
+    private List<String> listOfSectionTypes = new ArrayList<String>();
+    private List<String> listOfAllTinyImages = new ArrayList<String>();
+    private List<String> listOfNames = new ArrayList<String>();
+    private List<String> listOfIDS = new ArrayList<String>();
+    private List<String> listOfPromotions = new ArrayList<String>();
+    private List<String> listOfPromotionDetails = new ArrayList<String>();
 
 
     @Override
@@ -42,10 +46,7 @@ public class SplashScreenNew extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_new);
 
-        db=(MyApplication) getApplication();
-
-
-
+        db = (MyApplication) getApplication();
 
 
         ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -68,18 +69,7 @@ public class SplashScreenNew extends AppCompatActivity {
                         try {
 
                             parseXML();
-
-
-                           /* List<MyApplication> oldList=parseXML();
-
-                            for (MyApplication app2:oldList){
-
-
-                              newList.add(app2);
-
-
-
-                            }*/
+                            afterParse();
 
 
                         } catch (Exception e) {
@@ -121,8 +111,6 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
     public void parseXML() {
-
-        // List<MyApplication> listOfAllStuff = new ArrayList<MyApplication>();
 
 
         int event;
@@ -169,26 +157,19 @@ public class SplashScreenNew extends AppCompatActivity {
                     case XmlPullParser.START_TAG:
 
 
-
-
-
-                       /* if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
+                        if (tagname.equals("section") && myparser.getAttributeName(0).equals("sectionType")) {
 
 
                             String atrValue = myparser.getAttributeValue(0);
 
-                            app.setSectionType(atrValue);
+                            listOfSectionTypes.add(atrValue);
+
+                            db.setAllSectionTypes(listOfSectionTypes);
 
 
                         }
 
-                        if (tagname.equals("tinyImage ")) {
 
-                            String logo = getText;
-                            app.setLogo(logo);
-
-
-                        }*/
 
 
                         break;
@@ -203,13 +184,12 @@ public class SplashScreenNew extends AppCompatActivity {
 
                     case XmlPullParser.END_TAG:
 
-                      /*  if (tagname.equals("name")) {
+                        if (tagname.equals("name")) {
 
 
                             String name = getText;
-
-
-                            app.setNames(name);
+                            listOfNames.add(name);
+                            db.setAllNames(listOfNames);
 
 
                         }
@@ -217,36 +197,28 @@ public class SplashScreenNew extends AppCompatActivity {
                         if (tagname.equals("sportBookID")) {
 
                             String ids = getText;
+                            listOfIDS.add(ids);
+                            db.setAllids(listOfIDS);
 
-                            app.setIds(ids);
 
-
-                        }*/
+                        }
 
                         if (tagname.equals("catchPhrase")) {
 
-                            //__________ovo radi_____________
-
-
-                          //  String catchphrase = getText;
-                            //listOfCatches.add(catchphrase);
-
-                            //_________________________________
 
                             String catchphrase = getText;
                             listOfCatches.add(catchphrase);
                             db.setAllCatchPhrases(listOfCatches);
 
 
-
-
                         }
 
-                      /*  if (tagname.equals("promotion")) {
+                        if (tagname.equals("promotion")) {
 
 
                             String promotion = getText;
-                            app.setPromotion(promotion);
+                            listOfPromotions.add(promotion);
+                            db.setAllPromotions(listOfPromotions);
 
 
                         }
@@ -254,21 +226,20 @@ public class SplashScreenNew extends AppCompatActivity {
                         if (tagname.equals("promotionDetails")) {
 
                             String promotiondetails = getText;
-                            app.setPromotionDetails(promotiondetails);
-                            //   System.out.println("                ALL THE PROMOTION DETAILS: " + app.getPromotionDetails());
+                            listOfPromotionDetails.add(promotiondetails);
+                            db.setAllPromotionsDetails(listOfPromotionDetails);
 
 
-                        }*/
+                        }
 
-                        //  listOfAllStuff.add(app);
+                        if (tagname.equals("tinyImage")) {
+
+                            String tinyimage = getText;
+                            listOfAllTinyImages.add(tinyimage);
+                            db.setAllTinyImages(listOfAllTinyImages);
 
 
-                        // homeTab.setListOfSections(listOfSections);
-                        // listOfHomeTab.add(app);
-
-
-
-                        // newList.add(appObject);
+                        }
 
 
                         break;
@@ -283,25 +254,25 @@ public class SplashScreenNew extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // return listOfAllStuff;
+
     }
 
- /*   private void afterParse() {
+    private void afterParse() {
 
 
-        for (String s : app.getIds()) {
+        for (String s : db.getAllids()) {
 
 
-            i0 = app.getIds().get(0);
-            i1 = app.getIds().get(1);
-            i2 = app.getIds().get(2);
-            i3 = app.getIds().get(3);
-            i4 = app.getIds().get(4);
-            i5 = app.getIds().get(5);
-            i6 = app.getIds().get(6);
-            i7 = app.getIds().get(7);
-            i8 = app.getIds().get(8);
-            i9 = app.getIds().get(9);
+            i0 = db.getAllids().get(0);
+            i1 = db.getAllids().get(1);
+            i2 = db.getAllids().get(2);
+            i3 = db.getAllids().get(3);
+            i4 = db.getAllids().get(4);
+            i5 = db.getAllids().get(5);
+            i6 = db.getAllids().get(6);
+            i7 = db.getAllids().get(7);
+            i8 = db.getAllids().get(8);
+            i9 = db.getAllids().get(9);
 
 
         }
@@ -317,15 +288,16 @@ public class SplashScreenNew extends AppCompatActivity {
         ids.add(i7);
         ids.add(i8);
         ids.add(i9);
+        db.setAllNeededIds(ids);
 
 
-        for (String s2 : app.getNames()) {
+        for (String s2 : db.getAllNames()) {
 
 
             newNames.add(s2);
-            System.out.println();
-            header1 = app.getNames().get(0);
-            header2 = app.getNames().get(1);
+
+            header1 = db.getAllNames().get(0);
+            header2 = db.getAllNames().get(1);
 
 
         }
@@ -333,12 +305,14 @@ public class SplashScreenNew extends AppCompatActivity {
 
         newNames.remove("Top Sportsbooks");
         newNames.remove("Best Bonuses");
+        db.setAllNeededNames(newNames);
         headeri.clear();
         headeri.add(header1);
         headeri.add(header2);
+        db.setAllHeaders(headeri);
 
 
-    }*/
+    }
 
 
 }

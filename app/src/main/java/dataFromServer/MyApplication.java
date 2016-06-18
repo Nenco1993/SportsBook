@@ -26,6 +26,87 @@ public class MyApplication extends Application {
     String promotionDetails;
     String sectionType;
     List<String> AllCatchPhrases;
+    List<String> AllSectionTypes;
+    List<String> AllTinyImages;
+    List<String> AllNames;
+    List<String> Allids;
+    List<String> AllPromotions;
+    List<String> AllPromotionsDetails;
+    List<String> AllNeededIds;
+    List<String> AllNeededNames;
+    List<String> AllHeaders;
+
+    public List<String> getAllHeaders() {
+        return AllHeaders;
+    }
+
+    public void setAllHeaders(List<String> allHeaders) {
+        AllHeaders = allHeaders;
+    }
+
+    public List<String> getAllNeededNames() {
+        return AllNeededNames;
+    }
+
+    public void setAllNeededNames(List<String> allNeededNames) {
+        AllNeededNames = allNeededNames;
+    }
+
+    public List<String> getAllNeededIds() {
+        return AllNeededIds;
+    }
+
+    public void setAllNeededIds(List<String> allNeededIds) {
+        AllNeededIds = allNeededIds;
+    }
+
+    public List<String> getAllPromotionsDetails() {
+        return AllPromotionsDetails;
+    }
+
+    public void setAllPromotionsDetails(List<String> allPromotionsDetails) {
+        AllPromotionsDetails = allPromotionsDetails;
+    }
+
+    public List<String> getAllPromotions() {
+        return AllPromotions;
+    }
+
+    public void setAllPromotions(List<String> allPromotions) {
+        AllPromotions = allPromotions;
+    }
+
+    public List<String> getAllids() {
+        return Allids;
+    }
+
+    public void setAllids(List<String> allids) {
+        Allids = allids;
+    }
+
+    public List<String> getAllNames() {
+        return AllNames;
+    }
+
+    public void setAllNames(List<String> allNames) {
+        AllNames = allNames;
+    }
+
+    public List<String> getAllTinyImages() {
+        return AllTinyImages;
+    }
+
+    public void setAllTinyImages(List<String> allTinyImages) {
+        AllTinyImages = allTinyImages;
+    }
+
+    public List<String> getAllSectionTypes() {
+        return AllSectionTypes;
+    }
+
+    public void setAllSectionTypes(List<String> allSectionTypes) {
+        AllSectionTypes = allSectionTypes;
+    }
 
     public List<String> getAllCatchPhrases() {
         return AllCatchPhrases;
