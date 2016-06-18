@@ -34,7 +34,7 @@ public class SplashScreenNew extends AppCompatActivity {
     public static List<String> newNames = new ArrayList<String>();
     List<String> headeri = new ArrayList<String>();
 
-    public static List<String> listOfCatches=new ArrayList<String>();
+     private List<String> listOfCatches=new ArrayList<String>();
 
 
     @Override
@@ -225,21 +225,19 @@ public class SplashScreenNew extends AppCompatActivity {
 
                         if (tagname.equals("catchPhrase")) {
 
+                            //__________ovo radi_____________
+
+
+                          //  String catchphrase = getText;
+                            //listOfCatches.add(catchphrase);
+
+                            //_________________________________
 
                             String catchphrase = getText;
                             listOfCatches.add(catchphrase);
-                           // db.getListOfAllCatches().add(catchphrase);
+                            db.setAllCatchPhrases(listOfCatches);
 
 
-
-
-
-
-
-
-
-
-                            // newList.add(catchphrase);
 
 
                         }

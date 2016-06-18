@@ -25,18 +25,15 @@ public class MyApplication extends Application {
     String promotion;
     String promotionDetails;
     String sectionType;
-    List<String> listOfAllCatches;
+    List<String> AllCatchPhrases;
 
-
-    public List<String> getListOfAllCatches() {
-        return listOfAllCatches;
+    public List<String> getAllCatchPhrases() {
+        return AllCatchPhrases;
     }
 
-    public void setListOfAllCatches(List<String> listOfAllCatches) {
-        this.listOfAllCatches = listOfAllCatches;
+    public void setAllCatchPhrases(List<String> allCatchPhrases) {
+        AllCatchPhrases = allCatchPhrases;
     }
-
-
 
     public String getIds() {
         return ids;
