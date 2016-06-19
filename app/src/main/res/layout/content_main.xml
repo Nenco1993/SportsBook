@@ -9,7 +9,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main"
-        tools:context="com.example.neven.sportsbooks_v2.MainActivity" android:background="#cfcfcf">
+        tools:context="com.example.neven.sportsbooks_v2.MainActivity" android:background="#f0f0f0">
 
     <TabHost
             android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                     <ExpandableListView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:choiceMode="singleChoice"
                             android:id="@+id/expandableListView"/>
                 </LinearLayout>
                 <LinearLayout

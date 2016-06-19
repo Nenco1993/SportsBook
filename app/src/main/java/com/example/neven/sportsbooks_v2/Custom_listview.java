@@ -1,13 +1,16 @@
 package com.example.neven.sportsbooks_v2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import dataFromServer.MyApplication;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +20,16 @@ import java.util.List;
  */
 public class Custom_listview extends BaseExpandableListAdapter {
 
+
+
+
     private Context _context;
     private List<String> _listDataHeader;
     private HashMap<String, List<String>> _listDataChild;
+    private HashMap<HashMap<String,Integer>,Integer>bla;
 
     public Custom_listview(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                           HashMap<String, List<String>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -45,16 +52,24 @@ public class Custom_listview extends BaseExpandableListAdapter {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
+
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.custom_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.tvMainItemID);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.tvMainItemID);
+        TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
+        ImageView logo=(ImageView) convertView.findViewById(R.id.ivLogoID);
+
+
+        tvSubItem.setTextColor(Color.BLACK);
+        txtListChild.setTextColor(Color.BLACK);
+
 
         txtListChild.setText(childText);
+
         return convertView;
     }
 
@@ -82,6 +97,8 @@ public class Custom_listview extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
+
+
         String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -89,8 +106,12 @@ public class Custom_listview extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.custom_item_header, null);
         }
 
+        ExpandableListView elv = (ExpandableListView) parent;
+        elv.expandGroup(groupPosition);
+
         TextView lblListHeader = (TextView) convertView.findViewById(R.id.tvHeaderID);
         lblListHeader.setTypeface(null, Typeface.BOLD);
+        lblListHeader.setTextColor(Color.BLACK);
         lblListHeader.setText(headerTitle);
 
         return convertView;

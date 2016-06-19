@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tv3;
 
 
-    private HashMap<String, List<String>> childData;
+
+    private HashMap<String, List<String>> listDataChild;
+    private List<String> listDataHeader;
 
 
     @Override
@@ -97,11 +99,21 @@ public class MainActivity extends AppCompatActivity {
         //__________________________________________________________________________________________________
 
 
-        // prepareListData();
+        prepareListData();
 
-        //Custom_listview adapter = new Custom_listview(getApplicationContext(), headerData, childData);
+        Custom_listview adapter = new Custom_listview(getApplicationContext(), listDataHeader, listDataChild);
+        expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        // expandableListView.setAdapter(adapter);
+
+
+
+
+            }
+        });
+
+        expandableListView.setAdapter(adapter);
 
 
         // Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
@@ -139,37 +151,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
 
-        List<String> headerData = new ArrayList<String>();
-        //headerData.addAll(headers);
-        childData = new HashMap<String, List<String>>();
-
-
-        //headerData.add(headers.get(0));
-        // headerData.add(headers.get(1));
+        // Adding child data
+        listDataHeader.add(app.getAllHeaders().get(0));
+        listDataHeader.add(app.getAllHeaders().get(1));
 
 
         // Adding child data
-        List<String> firstSectionNames = new ArrayList<String>();
-        firstSectionNames.add("The Shawshank Redemption");
-        firstSectionNames.add("The Godfather");
-        firstSectionNames.add("The Godfather: Part II");
-        firstSectionNames.add("Pulp Fiction");
-        firstSectionNames.add("The Good, the Bad and the Ugly");
-        firstSectionNames.add("The Dark Knight");
-        firstSectionNames.add("12 Angry Men");
-
-        List<String> secondSectionNames = new ArrayList<String>();
-        secondSectionNames.add("The Conjuring");
-        secondSectionNames.add("Despicable Me 2");
-        secondSectionNames.add("Turbo");
-        secondSectionNames.add("Grown Ups 2");
-        secondSectionNames.add("Red 2");
-        secondSectionNames.add("The Wolverine");
+        List<String> topSportsBooks = new ArrayList<String>();
+        topSportsBooks.addAll(app.getAllNeededNames());
 
 
-        childData.put(headerData.get(0), firstSectionNames); // Header, Child data
-        childData.put(headerData.get(1), secondSectionNames);
+
+        List<String> bestBonuses = new ArrayList<String>();
+        bestBonuses.addAll(app.getAllPromotions());
+
+
+        List<String> subItems1=new ArrayList<String>();
+        subItems1.addAll(app.getAllCatchPhrases());
+
+        List<String> subItems2=new ArrayList<String>();
+        subItems2.addAll(app.getAllPromotionsDetails());
+
+
+
+        listDataChild.put(listDataHeader.get(0), topSportsBooks); // Header, Child data
+
+
+        listDataChild.put(listDataHeader.get(1), bestBonuses);
+
 
     }
 
