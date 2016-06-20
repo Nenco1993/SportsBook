@@ -7,11 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 import dataFromServer.MyApplication;
 import org.xmlpull.v1.XmlPullParser;
@@ -23,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplashScreenNew extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
 
 
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
@@ -39,12 +34,15 @@ public class SplashScreenNew extends AppCompatActivity {
     private List<String> listOfIDS = new ArrayList<String>();
     private List<String> listOfPromotions = new ArrayList<String>();
     private List<String> listOfPromotionDetails = new ArrayList<String>();
+    private List<String> listOfSportsBookTabNames = new ArrayList<String>();
+    private List<String> listOfSportsBookTabLogos = new ArrayList<String>();
+    private List<String> listOfAllWebSitesURLS=new ArrayList<String>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen_new);
+        setContentView(R.layout.splash_screen);
 
         db = (MyApplication) getApplication();
 
@@ -90,7 +88,7 @@ public class SplashScreenNew extends AppCompatActivity {
 
             } else {
 
-                Toast.makeText(SplashScreenNew.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
+                Toast.makeText(SplashScreen.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
                 finishAffinity();
 
 
@@ -100,7 +98,7 @@ public class SplashScreenNew extends AppCompatActivity {
         } catch (Exception e) {
 
 
-            Toast.makeText(SplashScreenNew.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
+            Toast.makeText(SplashScreen.this, "Internet connection must be ON", Toast.LENGTH_LONG).show();
             finishAffinity();
 
 
@@ -168,8 +166,6 @@ public class SplashScreenNew extends AppCompatActivity {
 
 
                         }
-
-
 
 
                         break;
@@ -241,6 +237,16 @@ public class SplashScreenNew extends AppCompatActivity {
 
                         }
 
+                        if(tagname.equals("url")){
+
+
+                            String link=getText;
+                            listOfAllWebSitesURLS.add(link);
+                            db.setAllSportsBookTabWebSitesURLS(listOfAllWebSitesURLS);
+
+
+                        }
+
 
                         break;
                 }
@@ -290,17 +296,50 @@ public class SplashScreenNew extends AppCompatActivity {
         ids.add(i9);
         db.setAllNeededIds(ids);
 
+        for (String s3 : db.getAllTinyImages()) {
+
+            listOfSportsBookTabLogos.add(s3);
+
+
+        }
+
+
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_21.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_22.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_23.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_25.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_26.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_31.png");
+        listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_35.png");
+
+
+        db.setAllSportsBookTabLogos(listOfSportsBookTabLogos);
+
 
         for (String s2 : db.getAllNames()) {
 
 
             newNames.add(s2);
+            listOfSportsBookTabNames.add(s2);
 
             header1 = db.getAllNames().get(0);
             header2 = db.getAllNames().get(1);
 
 
         }
+
+        listOfSportsBookTabNames.remove("Top Sportsbooks");
+        listOfSportsBookTabNames.remove("Best Bonuses");
+        listOfSportsBookTabNames.remove("WagerWeb");
+        listOfSportsBookTabNames.remove("JustBet");
+        listOfSportsBookTabNames.remove("5Dimes");
+        listOfSportsBookTabNames.remove("Sportbet");
+        listOfSportsBookTabNames.remove("SportsBettingOnline");
+        listOfSportsBookTabNames.remove("BetAnySports");
+        listOfSportsBookTabNames.remove("Bet With The Best");
+        listOfSportsBookTabNames.remove("BetOWI");
+
+        db.setAllSportsBookTabNames(listOfSportsBookTabNames);
 
 
         newNames.remove("Top Sportsbooks");

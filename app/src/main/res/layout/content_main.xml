@@ -9,7 +9,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main"
-        tools:context="com.example.neven.sportsbooks_v2.MainActivity" android:background="#f0f0f0">
+        tools:context="com.example.neven.sportsbooks_v2.MainActivity">
 
     <TabHost
             android:layout_width="match_parent"
@@ -52,13 +52,19 @@
                     <ListView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/listView"/>
+                            android:choiceMode="singleChoice"
+                            android:id="@+id/sportsBookTabListViewID"/>
                 </LinearLayout>
                 <LinearLayout
                         android:id="@+id/tabRatingID"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
+                    <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lvRatingTabID"/>
 
 
 
@@ -90,10 +96,7 @@
                             android:id="@+id/textView3"/>
 
 
-                    <ListView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/listView2"/>
+
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>

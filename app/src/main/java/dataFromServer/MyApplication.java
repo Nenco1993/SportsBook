@@ -11,9 +11,16 @@ import java.util.List;
  */
 public class MyApplication extends Application {
 
+    private static MyApplication instance;
+
+    public static MyApplication getInstance() {
+        return instance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         MySingleton.getInstance();
     }
 
@@ -35,6 +42,33 @@ public class MyApplication extends Application {
     List<String> AllNeededIds;
     List<String> AllNeededNames;
     List<String> AllHeaders;
+    List<String> AllSportsBookTabNames;
+    List<String> AllSportsBookTabLogos;
+    List<String> AllSportsBookTabWebSitesURLS;
+
+    public List<String> getAllSportsBookTabWebSitesURLS() {
+        return AllSportsBookTabWebSitesURLS;
+    }
+
+    public void setAllSportsBookTabWebSitesURLS(List<String> allSportsBookTabWebSitesURLS) {
+        AllSportsBookTabWebSitesURLS = allSportsBookTabWebSitesURLS;
+    }
+
+    public List<String> getAllSportsBookTabLogos() {
+        return AllSportsBookTabLogos;
+    }
+
+    public void setAllSportsBookTabLogos(List<String> allSportsBookTabLogos) {
+        AllSportsBookTabLogos = allSportsBookTabLogos;
+    }
+
+    public List<String> getAllSportsBookTabNames() {
+        return AllSportsBookTabNames;
+    }
+
+    public void setAllSportsBookTabNames(List<String> allSportsBookTabNames) {
+        AllSportsBookTabNames = allSportsBookTabNames;
+    }
 
     public List<String> getAllHeaders() {
         return AllHeaders;

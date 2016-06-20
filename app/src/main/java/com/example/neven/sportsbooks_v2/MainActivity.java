@@ -1,16 +1,14 @@
 package com.example.neven.sportsbooks_v2;
 
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -28,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TabHost tabHost;
     private ExpandableListView expandableListView;
     private ImageView ivLogo;
-    private ListView listView;
-    private ListView listView2;
+    private ListView listViewForSportsBookTab;
+    private ListView listviewForRatingsTab;
 
 
     private ImageView slika;
@@ -38,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageView slika4;
 
 
-    TextView tv3;
+    public static ImageLoader imageLoader;
 
+
+    TextView tv3;
 
 
     private HashMap<String, List<String>> listDataChild;
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         ivLogo = (ImageView) findViewById(R.id.ivLogoID);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView); //privremeno gone
-        listView = (ListView) findViewById(R.id.listView);
-        listView2 = (ListView) findViewById(R.id.listView2);
+
+        listviewForRatingsTab = (ListView) findViewById(R.id.lvRatingTabID);
         slika = (ImageView) findViewById(R.id.imageView);
         slika2 = (ImageView) findViewById(R.id.imageView2);
         slika3 = (ImageView) findViewById(R.id.imageView3);
@@ -73,10 +73,11 @@ public class MainActivity extends AppCompatActivity {
         tv3 = (TextView) findViewById(R.id.textView3);
 
 
-        listviewIspis();
-
-
         setupTabs();
+
+
+        displaySportsBookTabListview();
+        displayRatingsTabListview();
 
 
         //______________________________library za prikazivanje slika____________________________________
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         ImageLoaderConfiguration cfg = ImageLoaderConfiguration.createDefault(getApplicationContext());
 
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader = ImageLoader.getInstance();
         imageLoader.init(cfg);
         String urlSLike = "https://www.eclecticasoft.com/appdata/ec01000220/img/icon_19.png";
         String url2 = "https://www.eclecticasoft.com/appdata/ec01000220/img/icon_20.png";
@@ -99,21 +100,11 @@ public class MainActivity extends AppCompatActivity {
         //__________________________________________________________________________________________________
 
 
-        prepareListData();
+//        prepareListDataForHomeTab();
+        tabHost.setCurrentTabByTag("tag1");
 
-        Custom_listview adapter = new Custom_listview(getApplicationContext(), listDataHeader, listDataChild);
-        expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-
-
-
-            }
-        });
-
-        expandableListView.setAdapter(adapter);
+        // HomeTabListAdapter adapter = new HomeTabListAdapter(getApplicationContext(), listDataHeader, listDataChild, null);
+        // expandableListView.setAdapter(adapter);
 
 
         // Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
@@ -150,9 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void prepareListData() {
+    private void prepareListDataForHomeTab() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
+
 
         // Adding child data
         listDataHeader.add(app.getAllHeaders().get(0));
@@ -164,17 +156,15 @@ public class MainActivity extends AppCompatActivity {
         topSportsBooks.addAll(app.getAllNeededNames());
 
 
-
         List<String> bestBonuses = new ArrayList<String>();
         bestBonuses.addAll(app.getAllPromotions());
 
 
-        List<String> subItems1=new ArrayList<String>();
+        List<String> subItems1 = new ArrayList<String>();
         subItems1.addAll(app.getAllCatchPhrases());
 
-        List<String> subItems2=new ArrayList<String>();
+        List<String> subItems2 = new ArrayList<String>();
         subItems2.addAll(app.getAllPromotionsDetails());
-
 
 
         listDataChild.put(listDataHeader.get(0), topSportsBooks); // Header, Child data
@@ -185,12 +175,46 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void listviewIspis() {
+
+    private void displaySportsBookTabListview() {
 
 
-        ListAdapter la = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getAllTinyImages());
-        listView.setAdapter(la);
+        tabHost.setCurrentTabByTag("tag2");
+        listViewForSportsBookTab = (ListView) findViewById(R.id.sportsBookTabListViewID);
+        listViewForSportsBookTab.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+                switch (position) {
+
+
+                    default:
+
+
+                        Intent intent = new Intent(getApplicationContext(), WebView_activity.class);
+                        startActivity(intent);
+
+                        break;
+
+
+                }
+
+
+            }
+        });
+        SportsBookTabListAdapter sportsBookTabListAdapter = new SportsBookTabListAdapter(this, app.getAllSportsBookTabNames());
+        listViewForSportsBookTab.setAdapter(sportsBookTabListAdapter);
+
+
+    }
+
+    private void displayRatingsTabListview() {
+
+
+        tabHost.setCurrentTabByTag("tag3");
+        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getAllSportsBookTabWebSitesURLS());
+        listviewForRatingsTab.setAdapter(adapter);
 
     }
 

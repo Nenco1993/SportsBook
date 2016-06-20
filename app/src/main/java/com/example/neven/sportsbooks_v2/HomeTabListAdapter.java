@@ -18,21 +18,20 @@ import java.util.List;
 /**
  * Created by Neven on 13.6.2016..
  */
-public class Custom_listview extends BaseExpandableListAdapter {
-
-
+public class HomeTabListAdapter extends BaseExpandableListAdapter {
 
 
     private Context _context;
     private List<String> _listDataHeader;
     private HashMap<String, List<String>> _listDataChild;
-    private HashMap<HashMap<String,Integer>,Integer>bla;
+    private List<String> subItemText;
+    MyApplication app;
 
-    public Custom_listview(Context context, List<String> listDataHeader,
-                           HashMap<String, List<String>> listChildData) {
+    public HomeTabListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData, List<String> subItemText) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
+        this.subItemText = subItemText;
     }
 
     @Override
@@ -51,24 +50,32 @@ public class Custom_listview extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
+        ImageView childImage = (ImageView) getChild(groupPosition, childPosition);
 
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.custom_item, null);
+            convertView = infalInflater.inflate(R.layout.home_tab_listview_child_design, null);
         }
 
         TextView txtListChild = (TextView) convertView.findViewById(R.id.tvMainItemID);
         TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
-        ImageView logo=(ImageView) convertView.findViewById(R.id.ivLogoID);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.ivLogoID);
 
 
-        tvSubItem.setTextColor(Color.BLACK);
+        // tvSubItem.setTextColor(Color.BLACK);
         txtListChild.setTextColor(Color.BLACK);
 
-
         txtListChild.setText(childText);
+
+        for (String s2 : app.getAllTinyImages()) {
+
+            MainActivity.imageLoader.displayImage(s2, logo);
+
+
+        }
+
 
         return convertView;
     }
@@ -103,7 +110,7 @@ public class Custom_listview extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.custom_item_header, null);
+            convertView = infalInflater.inflate(R.layout.home_tab_listview_header_design, null);
         }
 
         ExpandableListView elv = (ExpandableListView) parent;
