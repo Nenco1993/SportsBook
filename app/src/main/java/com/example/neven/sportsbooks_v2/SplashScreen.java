@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     private MyApplication db;
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
     private List<String> ids = new ArrayList<String>();
-    private List<String> newNames = new ArrayList<String>();
+    private List<String> allNamesWithoutHeaders = new ArrayList<String>();
     private List<String> headeri = new ArrayList<String>();
     private List<String> listOfCatches = new ArrayList<String>();
     private List<String> listOfSectionTypes = new ArrayList<String>();
@@ -36,7 +36,18 @@ public class SplashScreen extends AppCompatActivity {
     private List<String> listOfPromotionDetails = new ArrayList<String>();
     private List<String> listOfSportsBookTabNames = new ArrayList<String>();
     private List<String> listOfSportsBookTabLogos = new ArrayList<String>();
-    private List<String> listOfAllWebSitesURLS=new ArrayList<String>();
+    private List<String> listOfAllWebSitesURLS = new ArrayList<String>();
+    private List<String> listOfFirstSectionNames = new ArrayList<String>();
+    private List<String> listOfSecondSectionNames = new ArrayList<String>();
+
+    private List<String> listOfFirstSectionNamesNeeded = new ArrayList<String>();
+    private List<String> listOfSecondSectionNamesNeeded = new ArrayList<String>();
+
+    private List<String> listOfFirstSectionHomeTabLogos = new ArrayList<String>();
+    private List<String> listOfSecondSectionHomeTabLogos = new ArrayList<String>();
+    private List<String> listOfFirstSectionHomeTabLogosNeeded = new ArrayList<String>();
+    private List<String> listOfSecondSectionHomeTabLogosNeeded = new ArrayList<String>();
+    private List<String> allLogosOnOnePlace=new ArrayList<String>();
 
 
     @Override
@@ -237,10 +248,10 @@ public class SplashScreen extends AppCompatActivity {
 
                         }
 
-                        if(tagname.equals("url")){
+                        if (tagname.equals("url")) {
 
 
-                            String link=getText;
+                            String link = getText;
                             listOfAllWebSitesURLS.add(link);
                             db.setAllSportsBookTabWebSitesURLS(listOfAllWebSitesURLS);
 
@@ -264,6 +275,20 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void afterParse() {
+
+        for (String s7 : db.getAllPromotions()) {
+
+            listOfSecondSectionNames.add(s7);
+
+
+        }
+
+        listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(0));
+        listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(1));
+        listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(8));
+        listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(12));
+        listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(13));
+        db.setListOfAllHomeTabSecondSectionPromotions(listOfSecondSectionNamesNeeded);
 
 
         for (String s : db.getAllids()) {
@@ -299,9 +324,45 @@ public class SplashScreen extends AppCompatActivity {
         for (String s3 : db.getAllTinyImages()) {
 
             listOfSportsBookTabLogos.add(s3);
+            listOfFirstSectionHomeTabLogos.add(s3);
+            listOfSecondSectionHomeTabLogos.add(s3);
 
 
         }
+
+
+
+        listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(0));
+        listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(1));
+        listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(5));
+        listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(9));
+        listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(11));
+        db.setListOfAllHomeTabFirstSectionLogos(listOfFirstSectionHomeTabLogosNeeded);
+
+        listOfSecondSectionHomeTabLogosNeeded.add(listOfSecondSectionHomeTabLogos.get(0));
+        listOfSecondSectionHomeTabLogosNeeded.add(listOfSecondSectionHomeTabLogos.get(1));
+        listOfSecondSectionHomeTabLogosNeeded.add(listOfSecondSectionHomeTabLogos.get(8));
+        listOfSecondSectionHomeTabLogosNeeded.add(listOfSecondSectionHomeTabLogos.get(12));
+        listOfSecondSectionHomeTabLogosNeeded.add(listOfSecondSectionHomeTabLogos.get(13));
+        db.setListOfAllHomeTabSecondSectionLogos(listOfSecondSectionHomeTabLogosNeeded);
+
+        allLogosOnOnePlace.add(listOfFirstSectionHomeTabLogos.get(0));
+        allLogosOnOnePlace.add(listOfFirstSectionHomeTabLogos.get(1));
+        allLogosOnOnePlace.add(listOfFirstSectionHomeTabLogos.get(5));
+        allLogosOnOnePlace.add(listOfFirstSectionHomeTabLogos.get(9));
+        allLogosOnOnePlace.add(listOfFirstSectionHomeTabLogos.get(11));
+
+        allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(0));
+        allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(1));
+        allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(5));
+        allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(9));
+        allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(11));
+
+        db.setAllLogosForHomeTab(allLogosOnOnePlace);
+
+
+
+
 
 
         listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_21.png");
@@ -319,14 +380,17 @@ public class SplashScreen extends AppCompatActivity {
         for (String s2 : db.getAllNames()) {
 
 
-            newNames.add(s2);
+            allNamesWithoutHeaders.add(s2);
             listOfSportsBookTabNames.add(s2);
+            listOfFirstSectionNames.add(s2);
+
 
             header1 = db.getAllNames().get(0);
             header2 = db.getAllNames().get(1);
 
 
         }
+
 
         listOfSportsBookTabNames.remove("Top Sportsbooks");
         listOfSportsBookTabNames.remove("Best Bonuses");
@@ -342,9 +406,19 @@ public class SplashScreen extends AppCompatActivity {
         db.setAllSportsBookTabNames(listOfSportsBookTabNames);
 
 
-        newNames.remove("Top Sportsbooks");
-        newNames.remove("Best Bonuses");
-        db.setAllNeededNames(newNames);
+        allNamesWithoutHeaders.remove("Top Sportsbooks");
+        allNamesWithoutHeaders.remove("Best Bonuses");
+        db.setAllNeededNames(allNamesWithoutHeaders);
+
+
+        listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(0));
+        listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(1));
+        listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(5));
+        listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(9));
+        listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(11));
+        db.setListOfAllHomeTabFirstSectionNames(listOfFirstSectionNamesNeeded);
+
+
         headeri.clear();
         headeri.add(header1);
         headeri.add(header2);

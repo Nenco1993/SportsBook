@@ -3,6 +3,7 @@ package com.example.neven.sportsbooks_v2;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import dataFromServer.MyApplication;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,22 +24,25 @@ import java.util.List;
 public class HomeTabListAdapter extends BaseExpandableListAdapter {
 
 
-    private Context _context;
-    private List<String> _listDataHeader;
-    private HashMap<String, List<String>> _listDataChild;
-    private List<String> subItemText;
-    MyApplication app;
+    private Context context;
+    private List<String> listDataHeaders;
+    private HashMap<String, List<String>> listDataChild;
+    private MyApplication app = MyApplication.getInstance();
+    ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public HomeTabListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData, List<String> subItemText) {
-        this._context = context;
-        this._listDataHeader = listDataHeader;
-        this._listDataChild = listChildData;
-        this.subItemText = subItemText;
+
+    public HomeTabListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData) {
+        this.context = context;
+        this.listDataHeaders = listDataHeader;
+        this.listDataChild = listChildData;
+
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+
+
+        return this.listDataChild.get(this.listDataHeaders.get(groupPosition))
                 .get(childPosititon);
     }
 
@@ -49,32 +55,45 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
+
         final String childText = (String) getChild(groupPosition, childPosition);
-        ImageView childImage = (ImageView) getChild(groupPosition, childPosition);
+
 
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.home_tab_listview_child_design, null);
+
+            // int imageId = this.childImages.get(this.groupImages.get(groupPosition)).get(childPosition);
         }
 
-        TextView txtListChild = (TextView) convertView.findViewById(R.id.tvMainItemID);
-        TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
-        ImageView logo = (ImageView) convertView.findViewById(R.id.ivLogoID);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.htTvMainItemID);
+        //TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.htIvLogoID);
 
 
         // tvSubItem.setTextColor(Color.BLACK);
         txtListChild.setTextColor(Color.BLACK);
 
+
         txtListChild.setText(childText);
 
-        for (String s2 : app.getAllTinyImages()) {
 
-            MainActivity.imageLoader.displayImage(s2, logo);
+        if (groupPosition==0){
+
+            imageLoader.displayImage(app.getListOfAllHomeTabFirstSectionLogos().get(childPosition),logo);
+
+
+        }else if (groupPosition==1){
+
+            imageLoader.displayImage(app.getListOfAllHomeTabSecondSectionLogos().get(childPosition),logo);
+
 
 
         }
+
+
 
 
         return convertView;
@@ -82,19 +101,17 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+        return this.listDataChild.get(this.listDataHeaders.get(groupPosition))
                 .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return this._listDataHeader.get(groupPosition);
+
+
+        return this.listDataHeaders.get(groupPosition);
     }
 
-    @Override
-    public int getGroupCount() {
-        return this._listDataHeader.size();
-    }
 
     @Override
     public long getGroupId(int groupPosition) {
@@ -108,7 +125,7 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
 
         String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.home_tab_listview_header_design, null);
         }
@@ -116,12 +133,19 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
         ExpandableListView elv = (ExpandableListView) parent;
         elv.expandGroup(groupPosition);
 
-        TextView lblListHeader = (TextView) convertView.findViewById(R.id.tvHeaderID);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setTextColor(Color.BLACK);
-        lblListHeader.setText(headerTitle);
+        TextView tvHeader = (TextView) convertView.findViewById(R.id.tvHeaderID);
+        tvHeader.setTypeface(null, Typeface.BOLD);
+
+
+        tvHeader.setTextColor(Color.BLACK);
+        tvHeader.setText(headerTitle);
 
         return convertView;
+    }
+
+    @Override
+    public int getGroupCount() {
+        return this.listDataHeaders.size();
     }
 
     @Override

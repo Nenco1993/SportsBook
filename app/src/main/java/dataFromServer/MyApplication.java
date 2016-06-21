@@ -46,6 +46,54 @@ public class MyApplication extends Application {
     List<String> AllSportsBookTabLogos;
     List<String> AllSportsBookTabWebSitesURLS;
 
+    List<String> listOfAllHomeTabFirstSectionLogos;
+    List<String> listOfAllHomeTabSecondSectionLogos;
+    List<String> listOfAllHomeTabFirstSectionNames;
+    List<String> listOfAllHomeTabSecondSectionPromotions;
+    List<String> AllLogosForHomeTab;
+
+    public List<String> getAllLogosForHomeTab() {
+        return AllLogosForHomeTab;
+    }
+
+    public void setAllLogosForHomeTab(List<String> allLogosForHomeTab) {
+        AllLogosForHomeTab = allLogosForHomeTab;
+    }
+
+    public List<String> getListOfAllHomeTabSecondSectionPromotions() {
+        return listOfAllHomeTabSecondSectionPromotions;
+    }
+
+    public void setListOfAllHomeTabSecondSectionPromotions(List<String> listOfAllHomeTabSecondSectionPromotions) {
+        this.listOfAllHomeTabSecondSectionPromotions = listOfAllHomeTabSecondSectionPromotions;
+    }
+
+    public List<String> getListOfAllHomeTabFirstSectionLogos() {
+        return listOfAllHomeTabFirstSectionLogos;
+    }
+
+    public void setListOfAllHomeTabFirstSectionLogos(List<String> listOfAllHomeTabFirstSectionLogos) {
+        this.listOfAllHomeTabFirstSectionLogos = listOfAllHomeTabFirstSectionLogos;
+    }
+
+    public List<String> getListOfAllHomeTabFirstSectionNames() {
+        return listOfAllHomeTabFirstSectionNames;
+    }
+
+    public void setListOfAllHomeTabFirstSectionNames(List<String> listOfAllHomeTabFirstSectionNames) {
+        this.listOfAllHomeTabFirstSectionNames = listOfAllHomeTabFirstSectionNames;
+    }
+
+    public List<String> getListOfAllHomeTabSecondSectionLogos() {
+        return listOfAllHomeTabSecondSectionLogos;
+    }
+
+    public void setListOfAllHomeTabSecondSectionLogos(List<String> listOfAllHomeTabSecondSectionLogos) {
+        this.listOfAllHomeTabSecondSectionLogos = listOfAllHomeTabSecondSectionLogos;
+    }
+
+
+
     public List<String> getAllSportsBookTabWebSitesURLS() {
         return AllSportsBookTabWebSitesURLS;
     }

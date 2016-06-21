@@ -2,39 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:weightSum="100"
+              android:weightSum="1"
               android:layout_height="match_parent">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivLogoID"
-            android:src="@drawable/abc_ic_star_black_36dp"
-            android:layout_weight="20"/>
-
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="70"
-                  android:orientation="vertical">
+                  android:layout_height="match_parent"
+                  android:layout_weight="0.8">
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:textAppearance="?android:attr/textAppearanceLarge"
-                  android:text="main item" android:id="@+id/tvMainItemID"/>
-
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:id="@+id/tvSubItemID"/>
+        <ImageView
+                android:layout_width="@dimen/picture"
+                android:layout_height="@dimen/picture"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/htIvLogoID" android:layout_marginRight="30dp" android:layout_marginLeft="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Large Text"
+                android:id="@+id/htTvMainItemID"
+                android:layout_gravity="center_vertical"/>
 
 
     </LinearLayout>
 
-    <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_weight="10"
-            android:id="@+id/ivArrowRightID" android:src="@drawable/arrow_right" android:layout_marginTop="10dp"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="0.2">
+
+        <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/ivArrowRightForHomeTabID" android:src="@drawable/arrow_right"
+                android:adjustViewBounds="false" android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"/>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

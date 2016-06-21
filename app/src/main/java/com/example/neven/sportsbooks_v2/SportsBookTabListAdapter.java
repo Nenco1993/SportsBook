@@ -21,16 +21,13 @@ import java.util.List;
 public class SportsBookTabListAdapter extends BaseAdapter {
 
     MyApplication app = MyApplication.getInstance();
-
     Context context;
-
-
     List<String> itemNames;
     ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public SportsBookTabListAdapter(Context context,List<String> itemNames) {
+    public SportsBookTabListAdapter(Context context, List<String> itemNames) {
         this.itemNames = itemNames;
-        this.context=context;
+        this.context = context;
     }
 
 
@@ -54,11 +51,10 @@ public class SportsBookTabListAdapter extends BaseAdapter {
 
 
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater)context
+            LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.sports_book_tab_listview_design, null);
         }
-
 
 
         TextView tvItemName = (TextView) convertView.findViewById(R.id.sbtTvMainItemID);

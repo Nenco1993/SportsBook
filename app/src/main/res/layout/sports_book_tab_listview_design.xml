@@ -14,7 +14,7 @@
                 android:layout_height="@dimen/picture"
                 android:src="@mipmap/ic_launcher"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/sbtIvLogoID" android:layout_marginRight="30dp"/>
+                android:id="@+id/sbtIvLogoID" android:layout_marginRight="30dp" android:layout_marginLeft="10dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +35,8 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:id="@+id/ivArrowRightID" android:src="@drawable/arrow_right"
-                android:adjustViewBounds="false" android:layout_gravity="center_vertical"/>
+                android:adjustViewBounds="false" android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"/>
 
 
     </LinearLayout>

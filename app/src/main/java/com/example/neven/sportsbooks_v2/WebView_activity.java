@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 import dataFromServer.MyApplication;
 
 public class WebView_activity extends AppCompatActivity {
@@ -27,20 +28,57 @@ public class WebView_activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_web_view_activity);
 
-       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        //setSupportActionBar(toolbar);
-
-        app=(MyApplication) getApplication();
-
-
-
-
         browser = (WebView) findViewById(R.id.webView);
         browser.setWebViewClient(new MyBrowser());
-        browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(0));
 
 
+        app = (MyApplication) getApplication();
+
+        Bundle getArgs = getIntent().getExtras();
+        String args = getArgs.getString("key1");
+
+        if (args.equals("betdsi")) {
+
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(0));
+
+
+        } else if (args.equals("bookmaker")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(1));
+
+
+        } else if (args.equals("bovada")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(5));
+
+
+        } else if (args.equals("gtbets")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(8));
+
+
+        } else if (args.equals("betonline")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(9));
+
+
+        } else if (args.equals("mybookie")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(11));
+
+
+        } else if (args.equals("topbet")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(12));
+
+
+        } else if (args.equals("sportsbetting")) {
+
+            browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(13));
+
+
+        }
 
 
     }
