@@ -37,6 +37,11 @@
                 android:label="@string/title_activity_web_view_2"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".WebView_for_ratings_tab"
+                android:label="@string/title_activity_web_view_for_ratings_tab"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

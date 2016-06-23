@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setupTabs();
+
         View parentLayout = findViewById(R.id.rootLayout);
         Snackbar.make(parentLayout, "Internet connection must be ON at all time", Snackbar.LENGTH_LONG).show();
 
@@ -53,14 +55,8 @@ public class MainActivity extends AppCompatActivity {
         expandableListView.setDivider(null);
         expandableListView.setDividerHeight(0);
 
-
-        listviewForRatingsTab = (ListView) findViewById(R.id.lvRatingTabID);
-
-
-        setupTabs();
-
-
-
+        listviewForRatingsTab = (ListView) findViewById(R.id.listViewForRatingsTab);
+        displayRatingsTabListview();
 
 
         //______________________________library za prikazivanje slika____________________________________
@@ -94,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
                 String whichChildWasClicked;
-                Bundle bundle2=new Bundle();
-
+                Bundle bundle2 = new Bundle();
 
 
                 if (groupPosition == 0) {
@@ -103,62 +98,56 @@ public class MainActivity extends AppCompatActivity {
                     switch (childPosition) {
 
                         case 0:
-                            whichChildWasClicked="zero1";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "zero1";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent.putExtras(bundle2);
                             startActivity(intent);
-
-                            Toast.makeText(MainActivity.this, "1g, 00000000", Toast.LENGTH_SHORT).show();
 
 
                             break;
 
                         case 1:
 
-                            whichChildWasClicked="one1";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent1=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "one1";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent1 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent1.putExtras(bundle2);
                             startActivity(intent1);
 
-                            Toast.makeText(MainActivity.this, "1g, 1111", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 2:
 
-                            whichChildWasClicked="two1";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent2=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "two1";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent2 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent2.putExtras(bundle2);
                             startActivity(intent2);
 
-                            Toast.makeText(MainActivity.this, "1g, 2222222", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 3:
 
-                            whichChildWasClicked="three1";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent3=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "three1";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent3 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent3.putExtras(bundle2);
                             startActivity(intent3);
 
-                            Toast.makeText(MainActivity.this, "1g, 333333", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 4:
 
-                            whichChildWasClicked="four1";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent4=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "four1";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent4 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent4.putExtras(bundle2);
                             startActivity(intent4);
 
-                            Toast.makeText(MainActivity.this, "1g, 44444444", Toast.LENGTH_SHORT).show();
 
                             break;
 
@@ -173,64 +162,56 @@ public class MainActivity extends AppCompatActivity {
 
                         case 0:
 
-                            whichChildWasClicked="zero2";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "zero2";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent.putExtras(bundle2);
                             startActivity(intent);
-
-
-
-                            Toast.makeText(MainActivity.this, "2g, 000000", Toast.LENGTH_SHORT).show();
 
 
                             break;
 
                         case 1:
 
-                            whichChildWasClicked="one2";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent2=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "one2";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent2 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent2.putExtras(bundle2);
                             startActivity(intent2);
 
-                            Toast.makeText(MainActivity.this, "2g, 1111111", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 2:
 
-                            whichChildWasClicked="two2";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent3=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "two2";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent3 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent3.putExtras(bundle2);
                             startActivity(intent3);
 
-                            Toast.makeText(MainActivity.this, "2g, 222222222", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 3:
 
-                            whichChildWasClicked="three2";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent4=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "three2";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent4 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent4.putExtras(bundle2);
                             startActivity(intent4);
 
-                            Toast.makeText(MainActivity.this, "2g, 33333333", Toast.LENGTH_SHORT).show();
 
                             break;
 
                         case 4:
 
-                            whichChildWasClicked="four2";
-                            bundle2.putString("key2",whichChildWasClicked);
-                            Intent intent5=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            whichChildWasClicked = "four2";
+                            bundle2.putString("key2", whichChildWasClicked);
+                            Intent intent5 = new Intent(getApplicationContext(), WebViewForHomeTab.class);
                             intent5.putExtras(bundle2);
                             startActivity(intent5);
 
-                            Toast.makeText(MainActivity.this, "2g, 444444444", Toast.LENGTH_SHORT).show();
 
                             break;
 
@@ -270,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Sportbook");
         spec.setContent(R.id.tabSportsbookID);
         tabHost.addTab(spec);
-        spec = tabHost.newTabSpec("tag2");
+        spec = tabHost.newTabSpec("tag3");
         spec.setIndicator("Rating");
         spec.setContent(R.id.tabRatingID);
         tabHost.addTab(spec);
@@ -446,7 +427,114 @@ public class MainActivity extends AppCompatActivity {
 
 
         tabHost.setCurrentTabByTag("tag3");
-        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, app.getAllSportsBookTabWebSitesURLS());
+        RatingsTabListAdapter adapter=new RatingsTabListAdapter(this,app.getListOfAllRatingsNeeded(),app.getListOfAllRatingsNames());
+        listviewForRatingsTab.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                String whichItemWasClicked;
+                Bundle bundle=new Bundle();
+
+
+
+
+                switch (position){
+
+                    case 0:
+
+                        whichItemWasClicked="zero";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+
+
+                        break;
+
+                    case 1:
+
+                        whichItemWasClicked="one";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent1=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent1.putExtras(bundle);
+                        startActivity(intent1);
+
+
+
+                        break;
+
+                    case 2:
+
+                        whichItemWasClicked="two";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent2=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent2.putExtras(bundle);
+                        startActivity(intent2);
+
+                        break;
+
+
+                    case 3:
+
+                        whichItemWasClicked="three";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent3=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent3.putExtras(bundle);
+                        startActivity(intent3);
+
+                        break;
+
+                    case 4:
+
+                        whichItemWasClicked="four";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent4=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent4.putExtras(bundle);
+                        startActivity(intent4);
+
+                        break;
+
+
+                    case 5:
+
+                        whichItemWasClicked="five";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent5=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent5.putExtras(bundle);
+                        startActivity(intent5);
+
+
+                        break;
+
+                    case 6:
+
+                        whichItemWasClicked="six";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent6=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent6.putExtras(bundle);
+                        startActivity(intent6);
+
+
+                        break;
+
+                    case 7:
+
+                        whichItemWasClicked="seven";
+                        bundle.putString("key3",whichItemWasClicked);
+                        Intent intent7=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        intent7.putExtras(bundle);
+                        startActivity(intent7);
+
+
+                        break;
+
+                }
+
+
+            }
+        });
         listviewForRatingsTab.setAdapter(adapter);
 
     }

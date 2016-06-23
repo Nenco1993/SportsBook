@@ -52,8 +52,10 @@ public class SplashScreen extends AppCompatActivity {
     private List<String> listOfAllCatchesForFirstSectionNeeded = new ArrayList<String>();
     private List<String> listOfAllPromotionsDetailsForSecondSection = new ArrayList<String>();
     private List<String> listOfAllPromotionsDetailsForSecondSectionNeeded = new ArrayList<String>();
-
-
+    private List<String> listOfAllRatings=new ArrayList<String>();
+    private List<String> listOfAllRatingsNew=new ArrayList<String>();
+    private List<String> listOfAllRatingsNeeded=new ArrayList<String>();
+    private List<String> listOfAllRatingsNames=new ArrayList<String>();
 
 
     @Override
@@ -264,6 +266,15 @@ public class SplashScreen extends AppCompatActivity {
 
                         }
 
+                        if (tagname.equals("overall")){
+
+                            String ratings=getText;
+                            listOfAllRatings.add(ratings);
+                            db.setListOfAllRatings(listOfAllRatings);
+
+
+                        }
+
 
                         break;
                 }
@@ -282,13 +293,27 @@ public class SplashScreen extends AppCompatActivity {
 
     private void afterParse() {
 
-        for (String s10:db.getAllPromotionsDetails()){
+        for (String s:db.getListOfAllRatings()){
+
+            listOfAllRatingsNew.add(s);
+
+        }
+
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(0));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(1));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(5));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(13));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(9));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(8));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(12));
+        listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(11));
+        db.setListOfAllRatingsNeeded(listOfAllRatingsNeeded);
+
+
+
+        for (String s10 : db.getAllPromotionsDetails()) {
 
             listOfAllPromotionsDetailsForSecondSection.add(s10);
-
-
-
-
 
 
         }
@@ -302,13 +327,9 @@ public class SplashScreen extends AppCompatActivity {
         db.setAllPromotionsDetailsForSecondSection(listOfAllPromotionsDetailsForSecondSectionNeeded);
 
 
-
-
-        for (String s8:db.getAllCatchPhrases()){
+        for (String s8 : db.getAllCatchPhrases()) {
 
             listOfAllCatchesForFirstSection.add(s8);
-
-
 
 
         }
@@ -319,7 +340,6 @@ public class SplashScreen extends AppCompatActivity {
         listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(9));
         listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(11));
         db.setAllCatchesForFirstSection(listOfAllCatchesForFirstSectionNeeded);
-
 
 
         for (String s7 : db.getAllPromotions()) {
@@ -458,6 +478,16 @@ public class SplashScreen extends AppCompatActivity {
         listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(9));
         listOfFirstSectionNamesNeeded.add(allNamesWithoutHeaders.get(11));
         db.setListOfAllHomeTabFirstSectionNames(listOfFirstSectionNamesNeeded);
+
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(0));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(1));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(5));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(13));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(9));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(8));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(12));
+        listOfAllRatingsNames.add(allNamesWithoutHeaders.get(11));
+        db.setListOfAllRatingsNames(listOfAllRatingsNames);
 
 
         headeri.clear();

@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Neven on 19.6.2016..
  */
 public class SportsBookTabListAdapter extends BaseAdapter {
-   public static int defaultTextColor;
+
 
     MyApplication app = MyApplication.getInstance();
     Context context;
@@ -57,7 +57,7 @@ public class SportsBookTabListAdapter extends BaseAdapter {
 
         TextView tvItemName = (TextView) convertView.findViewById(R.id.sbtTvMainItemID);
         ImageView ivLogo = (ImageView) convertView.findViewById(R.id.htLogoID);
-        defaultTextColor = tvItemName.getTextColors().getDefaultColor();
+
 
         tvItemName.setText(itemNames.get(position));
 
