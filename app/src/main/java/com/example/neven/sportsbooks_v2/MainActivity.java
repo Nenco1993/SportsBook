@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private MyApplication app;
     private TabHost tabHost;
     private ExpandableListView expandableListView;
-    private ImageView ivLogo;
     private ListView listViewForSportsBookTab;
     private ListView listviewForRatingsTab;
     private ImageView slika;
@@ -31,11 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView slika3;
     private ImageView slika4;
     public static ImageLoader imageLoader;
-    private TextView tv3;
-    List<String>listDataHeader;
-    HashMap<String,List<String>> listDataChild;
-   // List<String> listOfSubItems;
-
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listDataChild;
 
 
     @Override
@@ -54,18 +49,18 @@ public class MainActivity extends AppCompatActivity {
         app = (MyApplication) getApplication();
 
 
-     //   ivLogo = (ImageView) findViewById(R.id.ivLogoID);
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView); //privremeno gone
+        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView.setDivider(null);
+        expandableListView.setDividerHeight(0);
+
 
         listviewForRatingsTab = (ListView) findViewById(R.id.lvRatingTabID);
-
 
 
         setupTabs();
 
 
-        displaySportsBookTabListview();
-        // displayRatingsTabListview();
+
 
 
         //______________________________library za prikazivanje slika____________________________________
@@ -91,8 +86,170 @@ public class MainActivity extends AppCompatActivity {
         tabHost.setCurrentTabByTag("tag1");
         prepareListDataForHomeTab();
 
-        HomeTabListAdapter adapter = new HomeTabListAdapter(getApplicationContext(),listDataHeader,listDataChild);
+        HomeTabListAdapter adapter = new HomeTabListAdapter(getApplicationContext(), listDataHeader, listDataChild);
+
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                String whichChildWasClicked;
+                Bundle bundle2=new Bundle();
+
+
+
+                if (groupPosition == 0) {
+
+                    switch (childPosition) {
+
+                        case 0:
+                            whichChildWasClicked="zero1";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent.putExtras(bundle2);
+                            startActivity(intent);
+
+                            Toast.makeText(MainActivity.this, "1g, 00000000", Toast.LENGTH_SHORT).show();
+
+
+                            break;
+
+                        case 1:
+
+                            whichChildWasClicked="one1";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent1=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent1.putExtras(bundle2);
+                            startActivity(intent1);
+
+                            Toast.makeText(MainActivity.this, "1g, 1111", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 2:
+
+                            whichChildWasClicked="two1";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent2=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent2.putExtras(bundle2);
+                            startActivity(intent2);
+
+                            Toast.makeText(MainActivity.this, "1g, 2222222", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 3:
+
+                            whichChildWasClicked="three1";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent3=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent3.putExtras(bundle2);
+                            startActivity(intent3);
+
+                            Toast.makeText(MainActivity.this, "1g, 333333", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 4:
+
+                            whichChildWasClicked="four1";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent4=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent4.putExtras(bundle2);
+                            startActivity(intent4);
+
+                            Toast.makeText(MainActivity.this, "1g, 44444444", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+
+                    }
+
+
+                } else if (groupPosition == 1) {
+
+                    switch (childPosition) {
+
+
+                        case 0:
+
+                            whichChildWasClicked="zero2";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent.putExtras(bundle2);
+                            startActivity(intent);
+
+
+
+                            Toast.makeText(MainActivity.this, "2g, 000000", Toast.LENGTH_SHORT).show();
+
+
+                            break;
+
+                        case 1:
+
+                            whichChildWasClicked="one2";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent2=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent2.putExtras(bundle2);
+                            startActivity(intent2);
+
+                            Toast.makeText(MainActivity.this, "2g, 1111111", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 2:
+
+                            whichChildWasClicked="two2";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent3=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent3.putExtras(bundle2);
+                            startActivity(intent3);
+
+                            Toast.makeText(MainActivity.this, "2g, 222222222", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 3:
+
+                            whichChildWasClicked="three2";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent4=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent4.putExtras(bundle2);
+                            startActivity(intent4);
+
+                            Toast.makeText(MainActivity.this, "2g, 33333333", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+                        case 4:
+
+                            whichChildWasClicked="four2";
+                            bundle2.putString("key2",whichChildWasClicked);
+                            Intent intent5=new Intent(getApplicationContext(),WebViewForHomeTab.class);
+                            intent5.putExtras(bundle2);
+                            startActivity(intent5);
+
+                            Toast.makeText(MainActivity.this, "2g, 444444444", Toast.LENGTH_SHORT).show();
+
+                            break;
+
+
+                    }
+
+
+                }
+
+
+                return true;
+            }
+        });
+
+
         expandableListView.setAdapter(adapter);
+
+        displaySportsBookTabListview();
+        tabHost.setCurrentTabByTag("tag1");
 
 
         Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
@@ -132,9 +289,8 @@ public class MainActivity extends AppCompatActivity {
     private void prepareListDataForHomeTab() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
-      //  listOfSubItems=new ArrayList<String>();
-       // listOfSubItems.add(app.getPromotionDetails());
-
+        //  listOfSubItems=new ArrayList<String>();
+        // listOfSubItems.add(app.getPromotionDetails());
 
 
         // Adding child data
@@ -161,7 +317,6 @@ public class MainActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(1), bestBonuses);
 
 
-
     }
 
 
@@ -185,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
 
                         whichItemWasClicked = "betdsi";
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
@@ -198,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "bookmaker";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent1 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent1 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent1.putExtras(bundle);
                         startActivity(intent1);
 
@@ -211,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "bovada";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent2 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent2 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent2.putExtras(bundle);
                         startActivity(intent2);
 
@@ -222,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "gtbets";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent3 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent3 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent3.putExtras(bundle);
                         startActivity(intent3);
 
@@ -233,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "betonline";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent4 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent4 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent4.putExtras(bundle);
                         startActivity(intent4);
 
@@ -244,7 +399,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "mybookie";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent5 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent5 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent5.putExtras(bundle);
                         startActivity(intent5);
 
@@ -256,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "topbet";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent6 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent6 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent6.putExtras(bundle);
                         startActivity(intent6);
 
@@ -267,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "sportsbetting";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent7 = new Intent(getApplicationContext(), WebView_activity.class);
+                        Intent intent7 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
                         intent7.putExtras(bundle);
                         startActivity(intent7);
 
@@ -280,6 +435,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         SportsBookTabListAdapter sportsBookTabListAdapter = new SportsBookTabListAdapter(this, app.getAllSportsBookTabNames());
+        listViewForSportsBookTab.setDivider(null);
+        listViewForSportsBookTab.setDividerHeight(0);
         listViewForSportsBookTab.setAdapter(sportsBookTabListAdapter);
 
 

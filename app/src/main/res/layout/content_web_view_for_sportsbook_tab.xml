@@ -7,8 +7,8 @@
         android:layout_height="match_parent"
 
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_web_view_activity"
-        tools:context="com.example.neven.sportsbooks_v2.WebView_activity" android:background="#c9c9c9">
+        tools:showIn="@layout/activity_web_view_for_sportsbook_tab"
+        tools:context=".WebViewForSportsBookTab" android:background="#c9c9c9">
 
     <WebView
             android:layout_width="match_parent"

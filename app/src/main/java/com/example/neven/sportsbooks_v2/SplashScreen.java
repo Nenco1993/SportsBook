@@ -47,7 +47,13 @@ public class SplashScreen extends AppCompatActivity {
     private List<String> listOfSecondSectionHomeTabLogos = new ArrayList<String>();
     private List<String> listOfFirstSectionHomeTabLogosNeeded = new ArrayList<String>();
     private List<String> listOfSecondSectionHomeTabLogosNeeded = new ArrayList<String>();
-    private List<String> allLogosOnOnePlace=new ArrayList<String>();
+    private List<String> allLogosOnOnePlace = new ArrayList<String>();
+    private List<String> listOfAllCatchesForFirstSection = new ArrayList<String>();
+    private List<String> listOfAllCatchesForFirstSectionNeeded = new ArrayList<String>();
+    private List<String> listOfAllPromotionsDetailsForSecondSection = new ArrayList<String>();
+    private List<String> listOfAllPromotionsDetailsForSecondSectionNeeded = new ArrayList<String>();
+
+
 
 
     @Override
@@ -276,6 +282,46 @@ public class SplashScreen extends AppCompatActivity {
 
     private void afterParse() {
 
+        for (String s10:db.getAllPromotionsDetails()){
+
+            listOfAllPromotionsDetailsForSecondSection.add(s10);
+
+
+
+
+
+
+        }
+
+        listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(0));
+        listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(1));
+        listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(8));
+        listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(12));
+        listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(13));
+
+        db.setAllPromotionsDetailsForSecondSection(listOfAllPromotionsDetailsForSecondSectionNeeded);
+
+
+
+
+        for (String s8:db.getAllCatchPhrases()){
+
+            listOfAllCatchesForFirstSection.add(s8);
+
+
+
+
+        }
+
+        listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(0));
+        listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(1));
+        listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(5));
+        listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(9));
+        listOfAllCatchesForFirstSectionNeeded.add(listOfAllCatchesForFirstSection.get(11));
+        db.setAllCatchesForFirstSection(listOfAllCatchesForFirstSectionNeeded);
+
+
+
         for (String s7 : db.getAllPromotions()) {
 
             listOfSecondSectionNames.add(s7);
@@ -331,7 +377,6 @@ public class SplashScreen extends AppCompatActivity {
         }
 
 
-
         listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(0));
         listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(1));
         listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(5));
@@ -359,10 +404,6 @@ public class SplashScreen extends AppCompatActivity {
         allLogosOnOnePlace.add(listOfSecondSectionHomeTabLogos.get(11));
 
         db.setAllLogosForHomeTab(allLogosOnOnePlace);
-
-
-
-
 
 
         listOfSportsBookTabLogos.remove("https://www.eclecticasoft.com/appdata/ec01000220/img/icon_21.png");

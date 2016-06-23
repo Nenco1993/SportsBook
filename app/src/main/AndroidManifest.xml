@@ -28,8 +28,13 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".WebView_activity"
+                android:name=".WebViewForSportsBookTab"
                 android:label=""
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".WebViewForHomeTab"
+                android:label="@string/title_activity_web_view_2"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

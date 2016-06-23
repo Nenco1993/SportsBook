@@ -1,17 +1,14 @@
 package com.example.neven.sportsbooks_v2;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import dataFromServer.MyApplication;
-import dataFromServer.MySingleton;
 
 import java.util.List;
 
@@ -19,6 +16,7 @@ import java.util.List;
  * Created by Neven on 19.6.2016..
  */
 public class SportsBookTabListAdapter extends BaseAdapter {
+   public static int defaultTextColor;
 
     MyApplication app = MyApplication.getInstance();
     Context context;
@@ -58,7 +56,8 @@ public class SportsBookTabListAdapter extends BaseAdapter {
 
 
         TextView tvItemName = (TextView) convertView.findViewById(R.id.sbtTvMainItemID);
-        ImageView ivLogo = (ImageView) convertView.findViewById(R.id.sbtIvLogoID);
+        ImageView ivLogo = (ImageView) convertView.findViewById(R.id.htLogoID);
+        defaultTextColor = tvItemName.getTextColors().getDefaultColor();
 
         tvItemName.setText(itemNames.get(position));
 

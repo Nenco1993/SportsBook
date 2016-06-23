@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import dataFromServer.MyApplication;
 
@@ -59,7 +56,6 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
         final String childText = (String) getChild(groupPosition, childPosition);
 
 
-
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -69,31 +65,32 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView txtListChild = (TextView) convertView.findViewById(R.id.htTvMainItemID);
-        //TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
-        ImageView logo = (ImageView) convertView.findViewById(R.id.htIvLogoID);
+        TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.htLogoID);
 
 
-        // tvSubItem.setTextColor(Color.BLACK);
-        txtListChild.setTextColor(Color.BLACK);
+        txtListChild.setTextColor(Color.GRAY);
+        tvSubItem.setTextColor(Color.GRAY);
 
 
         txtListChild.setText(childText);
 
 
-        if (groupPosition==0){
+        if (groupPosition == 0) {
 
-            imageLoader.displayImage(app.getListOfAllHomeTabFirstSectionLogos().get(childPosition),logo);
+            tvSubItem.setText(app.getAllCatchesForFirstSection().get(childPosition));
+
+            imageLoader.displayImage(app.getListOfAllHomeTabFirstSectionLogos().get(childPosition), logo);
 
 
-        }else if (groupPosition==1){
+        } else if (groupPosition == 1) {
 
-            imageLoader.displayImage(app.getListOfAllHomeTabSecondSectionLogos().get(childPosition),logo);
+            tvSubItem.setText(app.getAllPromotionsDetailsForSecondSection().get(childPosition));
 
+            imageLoader.displayImage(app.getListOfAllHomeTabSecondSectionLogos().get(childPosition), logo);
 
 
         }
-
-
 
 
         return convertView;
@@ -155,6 +152,9 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
+
         return true;
     }
+
+
 }

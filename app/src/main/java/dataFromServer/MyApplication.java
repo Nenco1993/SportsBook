@@ -45,12 +45,29 @@ public class MyApplication extends Application {
     List<String> AllSportsBookTabNames;
     List<String> AllSportsBookTabLogos;
     List<String> AllSportsBookTabWebSitesURLS;
-
     List<String> listOfAllHomeTabFirstSectionLogos;
     List<String> listOfAllHomeTabSecondSectionLogos;
     List<String> listOfAllHomeTabFirstSectionNames;
     List<String> listOfAllHomeTabSecondSectionPromotions;
     List<String> AllLogosForHomeTab;
+    List<String> AllCatchesForFirstSection;
+    List<String> AllPromotionsDetailsForSecondSection;
+
+    public List<String> getAllPromotionsDetailsForSecondSection() {
+        return AllPromotionsDetailsForSecondSection;
+    }
+
+    public void setAllPromotionsDetailsForSecondSection(List<String> allPromotionsDetailsForSecondSection) {
+        AllPromotionsDetailsForSecondSection = allPromotionsDetailsForSecondSection;
+    }
+
+    public List<String> getAllCatchesForFirstSection() {
+        return AllCatchesForFirstSection;
+    }
+
+    public void setAllCatchesForFirstSection(List<String> allCatchesForFirstSection) {
+        AllCatchesForFirstSection = allCatchesForFirstSection;
+    }
 
     public List<String> getAllLogosForHomeTab() {
         return AllLogosForHomeTab;
