@@ -255,6 +255,10 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Rating");
         spec.setContent(R.id.tabRatingID);
         tabHost.addTab(spec);
+        spec = tabHost.newTabSpec("tag4");
+        spec.setIndicator("Promotions");
+        spec.setContent(R.id.tabPromotionsID);
+        tabHost.addTab(spec);
 
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
 

@@ -34,53 +34,47 @@ public class WebView_for_ratings_tab extends AppCompatActivity {
         Bundle getArgsForRatingsTab = getIntent().getExtras();
         String argsForRatingsTab = getArgsForRatingsTab.getString("key3");
 
-        if (argsForRatingsTab.equals("zero")){
+        if (argsForRatingsTab.equals("zero")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(0));
 
 
-        }else if (argsForRatingsTab.equals("one")){
+        } else if (argsForRatingsTab.equals("one")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(1));
 
 
-        }else if (argsForRatingsTab.equals("two")){
+        } else if (argsForRatingsTab.equals("two")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(5));
 
 
-        }else if (argsForRatingsTab.equals("three")){
+        } else if (argsForRatingsTab.equals("three")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(13));
 
 
-        }else if (argsForRatingsTab.equals("four")){
+        } else if (argsForRatingsTab.equals("four")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(9));
 
 
-        }else if (argsForRatingsTab.equals("five")){
+        } else if (argsForRatingsTab.equals("five")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(8));
 
 
-        }else if (argsForRatingsTab.equals("six")){
+        } else if (argsForRatingsTab.equals("six")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(12));
 
 
-        }else if (argsForRatingsTab.equals("seven")){
+        } else if (argsForRatingsTab.equals("seven")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(11));
 
 
         }
-
-
-
-
-
-
 
 
     }

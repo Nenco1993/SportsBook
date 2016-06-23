@@ -20,12 +20,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <TabWidget
-                    android:id="@android:id/tabs"
+
+            <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:baselineAligned="false"
-                    android:measureWithLargestChild="false" android:background="#0a0241">
-            </TabWidget>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/horizontalScrollView">
+
+
+                <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:baselineAligned="false"
+                        android:measureWithLargestChild="false" android:background="#0a0241">
+                </TabWidget>
+            </HorizontalScrollView>
             <FrameLayout
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
@@ -66,6 +74,15 @@
                             android:layout_height="wrap_content"
                             android:choiceMode="singleChoice"
                             android:id="@+id/listViewForRatingsTab"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/tabPromotionsID"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
 
 
