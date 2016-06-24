@@ -56,6 +56,15 @@ public class SplashScreen extends AppCompatActivity {
     private List<String> listOfAllRatingsNew=new ArrayList<String>();
     private List<String> listOfAllRatingsNeeded=new ArrayList<String>();
     private List<String> listOfAllRatingsNames=new ArrayList<String>();
+    private List<String> listOfPromotionsForPromotionsTab=new ArrayList<String>();
+    private List<String> listOfPromotionsForPromotionsTabNeeded=new ArrayList<String>();
+
+    private List<String> listOfLogosForPromotionsTab=new ArrayList<String>();
+    private List<String> listOfLogosForPromotionsTabNeeded=new ArrayList<String>();
+
+    private List<String> listOfPromotionsDetailsForPromotionTab=new ArrayList<String>();
+    private List<String> listOfPromotionsDetailsForPromotionTabNeeded=new ArrayList<String>();
+
 
 
     @Override
@@ -314,9 +323,20 @@ public class SplashScreen extends AppCompatActivity {
         for (String s10 : db.getAllPromotionsDetails()) {
 
             listOfAllPromotionsDetailsForSecondSection.add(s10);
+            listOfPromotionsDetailsForPromotionTab.add(s10);
 
 
         }
+
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(0));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(1));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(5));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(8));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(9));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(11));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(12));
+        listOfPromotionsDetailsForPromotionTabNeeded.add(listOfPromotionsDetailsForPromotionTab.get(13));
+        db.setListOfAllPromotionsDetailsForPromotionsTab(listOfPromotionsDetailsForPromotionTabNeeded);
 
         listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(0));
         listOfAllPromotionsDetailsForSecondSectionNeeded.add(listOfAllPromotionsDetailsForSecondSection.get(1));
@@ -345,9 +365,20 @@ public class SplashScreen extends AppCompatActivity {
         for (String s7 : db.getAllPromotions()) {
 
             listOfSecondSectionNames.add(s7);
+            listOfPromotionsForPromotionsTab.add(s7);
 
 
         }
+
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(0));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(1));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(5));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(8));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(9));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(11));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(12));
+        listOfPromotionsForPromotionsTabNeeded.add(listOfPromotionsForPromotionsTab.get(13));
+        db.setListOfAllPromotionsForPromotionsTabNeeded(listOfPromotionsForPromotionsTabNeeded);
 
         listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(0));
         listOfSecondSectionNamesNeeded.add(listOfSecondSectionNames.get(1));
@@ -392,9 +423,20 @@ public class SplashScreen extends AppCompatActivity {
             listOfSportsBookTabLogos.add(s3);
             listOfFirstSectionHomeTabLogos.add(s3);
             listOfSecondSectionHomeTabLogos.add(s3);
+            listOfLogosForPromotionsTab.add(s3);
 
 
         }
+
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(0));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(1));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(5));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(8));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(9));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(11));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(12));
+        listOfLogosForPromotionsTabNeeded.add(listOfLogosForPromotionsTab.get(13));
+        db.setListOfLogosForPromotionsTab(listOfLogosForPromotionsTabNeeded);
 
 
         listOfFirstSectionHomeTabLogosNeeded.add(listOfFirstSectionHomeTabLogos.get(0));

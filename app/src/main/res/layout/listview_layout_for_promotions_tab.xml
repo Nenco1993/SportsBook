@@ -6,27 +6,20 @@
 
 
     <ImageView
-            android:layout_width="@dimen/picture"
-            android:layout_height="@dimen/picture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/htLogoID" android:layout_centerVertical="true" android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp" android:layout_marginRight="30dp" android:layout_alignParentEnd="false"/>
+            android:layout_marginLeft="10dp" android:layout_marginRight="30dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
             android:id="@+id/htMainItemID"
-            android:layout_alignLeft="@+id/htLogoID"
 
             android:layout_alignTop="@+id/htLogoID" android:layout_alignStart="@+id/htSubItemID"
     />
-
-    <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/htArrowRightID" android:layout_centerVertical="true" android:layout_alignParentEnd="true"
-            android:src="@drawable/arrow_right" android:layout_marginRight="10dp"/>
 
 
     <View

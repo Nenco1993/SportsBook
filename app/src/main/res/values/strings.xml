@@ -4,4 +4,5 @@
     <string name="title_activity_web_view_activity">WebView_activity</string>
     <string name="title_activity_web_view_2">WebView_2</string>
     <string name="title_activity_web_view_for_ratings_tab">WebView_for_ratings_tab</string>
+    <string name="title_activity_web_view_for_promotions_tab">WebView_for_promotions_tab</string>
 </resources>

@@ -55,6 +55,33 @@ public class MyApplication extends Application {
     List<String> listOfAllRatings;
     List<String> listOfAllRatingsNeeded;
     List<String> listOfAllRatingsNames;
+    List<String> listOfAllPromotionsForPromotionsTabNeeded;
+    List<String> listOfLogosForPromotionsTab;
+    List<String> listOfAllPromotionsDetailsForPromotionsTab;
+
+    public List<String> getListOfAllPromotionsDetailsForPromotionsTab() {
+        return listOfAllPromotionsDetailsForPromotionsTab;
+    }
+
+    public void setListOfAllPromotionsDetailsForPromotionsTab(List<String> listOfAllPromotionsDetailsForPromotionsTab) {
+        this.listOfAllPromotionsDetailsForPromotionsTab = listOfAllPromotionsDetailsForPromotionsTab;
+    }
+
+    public List<String> getListOfLogosForPromotionsTab() {
+        return listOfLogosForPromotionsTab;
+    }
+
+    public void setListOfLogosForPromotionsTab(List<String> listOfLogosForPromotionsTab) {
+        this.listOfLogosForPromotionsTab = listOfLogosForPromotionsTab;
+    }
+
+    public List<String> getListOfAllPromotionsForPromotionsTabNeeded() {
+        return listOfAllPromotionsForPromotionsTabNeeded;
+    }
+
+    public void setListOfAllPromotionsForPromotionsTabNeeded(List<String> listOfAllPromotionsForPromotionsTabNeeded) {
+        this.listOfAllPromotionsForPromotionsTabNeeded = listOfAllPromotionsForPromotionsTabNeeded;
+    }
 
     public List<String> getListOfAllRatingsNames() {
         return listOfAllRatingsNames;

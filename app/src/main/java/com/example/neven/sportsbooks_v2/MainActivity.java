@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static ImageLoader imageLoader;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
+    private ListView lvPromotionsTab;
 
 
     @Override
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         app = (MyApplication) getApplication();
+
+        lvPromotionsTab = (ListView) findViewById(R.id.lvPromotionsTabID);
 
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
@@ -230,10 +233,11 @@ public class MainActivity extends AppCompatActivity {
         expandableListView.setAdapter(adapter);
 
         displaySportsBookTabListview();
+        displayPromotionsTabListview();
         tabHost.setCurrentTabByTag("tag1");
 
 
-        Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
+        //  Toast.makeText(MainActivity.this, "podaci dohvaceni", Toast.LENGTH_LONG).show();
 
 
     }
@@ -431,49 +435,45 @@ public class MainActivity extends AppCompatActivity {
 
 
         tabHost.setCurrentTabByTag("tag3");
-        RatingsTabListAdapter adapter=new RatingsTabListAdapter(this,app.getListOfAllRatingsNeeded(),app.getListOfAllRatingsNames());
+        RatingsTabListAdapter adapter = new RatingsTabListAdapter(this, app.getListOfAllRatingsNeeded(), app.getListOfAllRatingsNames());
         listviewForRatingsTab.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
                 String whichItemWasClicked;
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
 
 
-
-
-                switch (position){
+                switch (position) {
 
                     case 0:
 
-                        whichItemWasClicked="zero";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "zero";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
-
 
 
                         break;
 
                     case 1:
 
-                        whichItemWasClicked="one";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent1=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "one";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent1 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent1.putExtras(bundle);
                         startActivity(intent1);
-
 
 
                         break;
 
                     case 2:
 
-                        whichItemWasClicked="two";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent2=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "two";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent2 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent2.putExtras(bundle);
                         startActivity(intent2);
 
@@ -482,9 +482,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 3:
 
-                        whichItemWasClicked="three";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent3=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "three";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent3 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent3.putExtras(bundle);
                         startActivity(intent3);
 
@@ -492,9 +492,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 4:
 
-                        whichItemWasClicked="four";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent4=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "four";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent4 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent4.putExtras(bundle);
                         startActivity(intent4);
 
@@ -503,9 +503,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 5:
 
-                        whichItemWasClicked="five";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent5=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "five";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent5 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent5.putExtras(bundle);
                         startActivity(intent5);
 
@@ -514,9 +514,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 6:
 
-                        whichItemWasClicked="six";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent6=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "six";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent6 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent6.putExtras(bundle);
                         startActivity(intent6);
 
@@ -525,9 +525,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 7:
 
-                        whichItemWasClicked="seven";
-                        bundle.putString("key3",whichItemWasClicked);
-                        Intent intent7=new Intent(getApplicationContext(),WebView_for_ratings_tab.class);
+                        whichItemWasClicked = "seven";
+                        bundle.putString("key3", whichItemWasClicked);
+                        Intent intent7 = new Intent(getApplicationContext(), WebView_for_ratings_tab.class);
                         intent7.putExtras(bundle);
                         startActivity(intent7);
 
@@ -540,6 +540,133 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         listviewForRatingsTab.setAdapter(adapter);
+
+    }
+
+    public void displayPromotionsTabListview() {
+
+
+        tabHost.setCurrentTabByTag("tag4");
+        PromotionsTabListAdapter adapter = new PromotionsTabListAdapter(this, app.getListOfAllPromotionsDetailsForPromotionsTab(), app.getListOfAllPromotionsForPromotionsTabNeeded());
+        lvPromotionsTab.setDivider(null);
+        lvPromotionsTab.setDividerHeight(0);
+
+
+        lvPromotionsTab.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String whichItemWasClicked;
+                Bundle bundle=new Bundle();
+
+                switch (position) {
+
+
+                    case 0:
+
+                        whichItemWasClicked="zero";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+
+                        break;
+
+
+                    case 1:
+
+                        whichItemWasClicked="one";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent1=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent1.putExtras(bundle);
+                        startActivity(intent1);
+
+
+                        break;
+
+
+                    case 2:
+
+                        whichItemWasClicked="two";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent2=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent2.putExtras(bundle);
+                        startActivity(intent2);
+
+
+                        break;
+
+
+                    case 3:
+
+                        whichItemWasClicked="three";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent3=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent3.putExtras(bundle);
+                        startActivity(intent3);
+
+
+                        break;
+
+
+                    case 4:
+
+                        whichItemWasClicked="four";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent4=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent4.putExtras(bundle);
+                        startActivity(intent4);
+
+
+                        break;
+
+
+                    case 5:
+
+                        whichItemWasClicked="five";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent5=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent5.putExtras(bundle);
+                        startActivity(intent5);
+
+
+                        break;
+
+
+                    case 6:
+
+                        whichItemWasClicked="six";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent6=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent6.putExtras(bundle);
+                        startActivity(intent6);
+
+
+                        break;
+
+
+                    case 7:
+
+                        whichItemWasClicked="seven";
+                        bundle.putString("promotion",whichItemWasClicked);
+                        Intent intent7=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        intent7.putExtras(bundle);
+                        startActivity(intent7);
+
+
+                        break;
+
+
+                }
+
+
+            }
+        });
+
+
+        lvPromotionsTab.setAdapter(adapter);
+
 
     }
 

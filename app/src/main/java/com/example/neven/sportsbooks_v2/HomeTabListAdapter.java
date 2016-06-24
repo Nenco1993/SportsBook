@@ -3,7 +3,6 @@ package com.example.neven.sportsbooks_v2;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import dataFromServer.MyApplication;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -64,13 +62,15 @@ public class HomeTabListAdapter extends BaseExpandableListAdapter {
             // int imageId = this.childImages.get(this.groupImages.get(groupPosition)).get(childPosition);
         }
 
-        TextView txtListChild = (TextView) convertView.findViewById(R.id.htTvMainItemID);
-        TextView tvSubItem = (TextView) convertView.findViewById(R.id.tvSubItemID);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.htMainItemID);
+        TextView tvSubItem = (TextView) convertView.findViewById(R.id.htSubItemID);
         ImageView logo = (ImageView) convertView.findViewById(R.id.htLogoID);
 
 
-        txtListChild.setTextColor(Color.GRAY);
-        tvSubItem.setTextColor(Color.GRAY);
+
+
+        txtListChild.setTextColor(Color.parseColor("#7B7B7B"));
+        tvSubItem.setTextColor(Color.parseColor("#7B7B7B"));
 
 
         txtListChild.setText(childText);
