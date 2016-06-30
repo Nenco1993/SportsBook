@@ -21,6 +21,8 @@ import java.util.List;
 public class SplashScreen extends AppCompatActivity {
 
 
+
+
     private String urlString = "http://www.eclecticasoft.com/appdata/ec01000220/sportsBooks.xml";
     private MyApplication db;
     private String i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, header1, header2;
@@ -52,19 +54,22 @@ public class SplashScreen extends AppCompatActivity {
     private List<String> listOfAllCatchesForFirstSectionNeeded = new ArrayList<String>();
     private List<String> listOfAllPromotionsDetailsForSecondSection = new ArrayList<String>();
     private List<String> listOfAllPromotionsDetailsForSecondSectionNeeded = new ArrayList<String>();
-    private List<String> listOfAllRatings=new ArrayList<String>();
-    private List<String> listOfAllRatingsNew=new ArrayList<String>();
-    private List<String> listOfAllRatingsNeeded=new ArrayList<String>();
-    private List<String> listOfAllRatingsNames=new ArrayList<String>();
-    private List<String> listOfPromotionsForPromotionsTab=new ArrayList<String>();
-    private List<String> listOfPromotionsForPromotionsTabNeeded=new ArrayList<String>();
+    private List<String> listOfAllRatings = new ArrayList<String>();
+    private List<String> listOfAllRatingsNew = new ArrayList<String>();
+    private List<String> listOfAllRatingsNeeded = new ArrayList<String>();
+    private List<String> listOfAllRatingsNames = new ArrayList<String>();
+    private List<String> listOfPromotionsForPromotionsTab = new ArrayList<String>();
+    private List<String> listOfPromotionsForPromotionsTabNeeded = new ArrayList<String>();
 
-    private List<String> listOfLogosForPromotionsTab=new ArrayList<String>();
-    private List<String> listOfLogosForPromotionsTabNeeded=new ArrayList<String>();
+    private List<String> listOfLogosForPromotionsTab = new ArrayList<String>();
+    private List<String> listOfLogosForPromotionsTabNeeded = new ArrayList<String>();
 
-    private List<String> listOfPromotionsDetailsForPromotionTab=new ArrayList<String>();
-    private List<String> listOfPromotionsDetailsForPromotionTabNeeded=new ArrayList<String>();
+    private List<String> listOfPromotionsDetailsForPromotionTab = new ArrayList<String>();
+    private List<String> listOfPromotionsDetailsForPromotionTabNeeded = new ArrayList<String>();
 
+    private List<String> listOfScreenshotImages = new ArrayList<String>();
+
+    private List<String> listOfReviews = new ArrayList<String>();
 
 
     @Override
@@ -275,11 +280,29 @@ public class SplashScreen extends AppCompatActivity {
 
                         }
 
-                        if (tagname.equals("overall")){
+                        if (tagname.equals("overall")) {
 
-                            String ratings=getText;
+                            String ratings = getText;
                             listOfAllRatings.add(ratings);
                             db.setListOfAllRatings(listOfAllRatings);
+
+
+                        }
+
+                        if (tagname.equals("screenshotImage")) {
+
+                            String ss = getText;
+                            listOfScreenshotImages.add(ss);
+                            db.setListOfAllScreenshotImages(listOfScreenshotImages);
+
+
+                        }
+
+                        if (tagname.equals("review")) {
+
+                            String review = getText;
+                            listOfReviews.add(review);
+                            db.setListOfAllReviews(listOfReviews);
 
 
                         }
@@ -302,7 +325,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private void afterParse() {
 
-        for (String s:db.getListOfAllRatings()){
+        for (String s : db.getListOfAllRatings()) {
 
             listOfAllRatingsNew.add(s);
 
@@ -317,7 +340,6 @@ public class SplashScreen extends AppCompatActivity {
         listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(12));
         listOfAllRatingsNeeded.add(listOfAllRatingsNew.get(11));
         db.setListOfAllRatingsNeeded(listOfAllRatingsNeeded);
-
 
 
         for (String s10 : db.getAllPromotionsDetails()) {

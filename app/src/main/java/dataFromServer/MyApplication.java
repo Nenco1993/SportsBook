@@ -58,6 +58,24 @@ public class MyApplication extends Application {
     List<String> listOfAllPromotionsForPromotionsTabNeeded;
     List<String> listOfLogosForPromotionsTab;
     List<String> listOfAllPromotionsDetailsForPromotionsTab;
+    List<String> listOfAllScreenshotImages;
+    List<String> listOfAllReviews;
+
+    public List<String> getListOfAllReviews() {
+        return listOfAllReviews;
+    }
+
+    public void setListOfAllReviews(List<String> listOfAllReviews) {
+        this.listOfAllReviews = listOfAllReviews;
+    }
+
+    public List<String> getListOfAllScreenshotImages() {
+        return listOfAllScreenshotImages;
+    }
+
+    public void setListOfAllScreenshotImages(List<String> listOfAllScreenshotImages) {
+        this.listOfAllScreenshotImages = listOfAllScreenshotImages;
+    }
 
     public List<String> getListOfAllPromotionsDetailsForPromotionsTab() {
         return listOfAllPromotionsDetailsForPromotionsTab;

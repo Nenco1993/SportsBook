@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="view_width_for_home_tab">680dp</dimen>
+    <dimen name="linear_layout_width">600dp</dimen>
+    <dimen name="view_width_for_sportsbook_tab">655dp</dimen>
+    <dimen name="view_width">675dp</dimen>
+
+</resources>

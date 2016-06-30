@@ -5,8 +5,8 @@
 
 
     <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/logo"
+            android:layout_height="@dimen/logo"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/htLogoID"
             android:layout_centerVertical="true"
@@ -33,7 +33,7 @@
 
 
     <View
-            android:layout_width="270dp"
+            android:layout_width="@dimen/view_width_for_sportsbook_tab"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"
             android:layout_below="@+id/htLogoID"

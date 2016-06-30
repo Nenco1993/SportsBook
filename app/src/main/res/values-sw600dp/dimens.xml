@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="picture">200dp</dimen>
+
+    <dimen name="view_width">480dp</dimen>
+    <dimen name="view_width_for_sportsbook_tab">460dp</dimen>
+    <dimen name="logo">100dp</dimen>
+    <dimen name="rightarrow">370dp</dimen>
+    <dimen name="view_width_for_home_tab">480dp</dimen>
+    <dimen name="linear_layout_width">420dp</dimen>
 
 </resources>

@@ -3,5 +3,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="picture">50dp</dimen>
+
+
+    <dimen name="view_width">290dp</dimen>
+    <dimen name="view_width_for_sportsbook_tab">270dp</dimen>
+    <dimen name="logo">50dp</dimen>
+    <dimen name="rightarrow">190dp</dimen>
+    <dimen name="view_width_for_home_tab">290dp</dimen>
+    <dimen name="linear_layout_width">240dp</dimen>
+
+
 </resources>

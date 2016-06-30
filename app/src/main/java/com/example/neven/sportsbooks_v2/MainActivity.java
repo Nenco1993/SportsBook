@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabs();
 
+
         View parentLayout = findViewById(R.id.rootLayout);
         Snackbar.make(parentLayout, "Internet connection must be ON at all time", Snackbar.LENGTH_LONG).show();
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(cfg);
+
         // String urlSLike = "https://www.eclecticasoft.com/appdata/ec01000220/img/icon_19.png";
         //String url2 = "https://www.eclecticasoft.com/appdata/ec01000220/img/icon_20.png";
         //  String url3 = "https://www.eclecticasoft.com/appdata/ec01000220/img/icon_21.png";
@@ -264,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setContent(R.id.tabPromotionsID);
         tabHost.addTab(spec);
 
+
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
 
             TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
@@ -327,9 +330,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case 0:
 
+
                         whichItemWasClicked = "betdsi";
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
@@ -342,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "bookmaker";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent1 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent1 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent1.putExtras(bundle);
                         startActivity(intent1);
 
@@ -355,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "bovada";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent2 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent2 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent2.putExtras(bundle);
                         startActivity(intent2);
 
@@ -366,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "gtbets";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent3 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent3 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent3.putExtras(bundle);
                         startActivity(intent3);
 
@@ -377,7 +381,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "betonline";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent4 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent4 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent4.putExtras(bundle);
                         startActivity(intent4);
 
@@ -388,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "mybookie";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent5 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent5 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent5.putExtras(bundle);
                         startActivity(intent5);
 
@@ -400,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "topbet";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent6 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent6 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent6.putExtras(bundle);
                         startActivity(intent6);
 
@@ -411,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
                         whichItemWasClicked = "sportsbetting";
 
                         bundle.putString("key1", whichItemWasClicked);
-                        Intent intent7 = new Intent(getApplicationContext(), WebViewForSportsBookTab.class);
+                        Intent intent7 = new Intent(getApplicationContext(), SportsBookTab.class);
                         intent7.putExtras(bundle);
                         startActivity(intent7);
 
@@ -557,16 +561,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String whichItemWasClicked;
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
 
                 switch (position) {
 
 
                     case 0:
 
-                        whichItemWasClicked="zero";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "zero";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
@@ -576,9 +580,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 1:
 
-                        whichItemWasClicked="one";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent1=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "one";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent1 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent1.putExtras(bundle);
                         startActivity(intent1);
 
@@ -588,9 +592,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 2:
 
-                        whichItemWasClicked="two";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent2=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "two";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent2 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent2.putExtras(bundle);
                         startActivity(intent2);
 
@@ -600,9 +604,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 3:
 
-                        whichItemWasClicked="three";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent3=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "three";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent3 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent3.putExtras(bundle);
                         startActivity(intent3);
 
@@ -612,9 +616,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 4:
 
-                        whichItemWasClicked="four";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent4=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "four";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent4 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent4.putExtras(bundle);
                         startActivity(intent4);
 
@@ -624,9 +628,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 5:
 
-                        whichItemWasClicked="five";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent5=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "five";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent5 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent5.putExtras(bundle);
                         startActivity(intent5);
 
@@ -636,9 +640,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 6:
 
-                        whichItemWasClicked="six";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent6=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "six";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent6 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent6.putExtras(bundle);
                         startActivity(intent6);
 
@@ -648,9 +652,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case 7:
 
-                        whichItemWasClicked="seven";
-                        bundle.putString("promotion",whichItemWasClicked);
-                        Intent intent7=new Intent(getApplicationContext(),WebView_for_promotions_tab.class);
+                        whichItemWasClicked = "seven";
+                        bundle.putString("promotion", whichItemWasClicked);
+                        Intent intent7 = new Intent(getApplicationContext(), WebView_for_promotions_tab.class);
                         intent7.putExtras(bundle);
                         startActivity(intent7);
 

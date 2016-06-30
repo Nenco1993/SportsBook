@@ -1,17 +1,20 @@
 package com.example.neven.sportsbooks_v2;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 import dataFromServer.MyApplication;
 
 public class WebViewForHomeTab extends AppCompatActivity {
 
     WebView browser;
     MyApplication app;
+    String args2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,14 @@ public class WebViewForHomeTab extends AppCompatActivity {
         app = (MyApplication) getApplication();
 
         Bundle getArgs2 = getIntent().getExtras();
-        String args2 = getArgs2.getString("key2");
+        args2 = getArgs2.getString("key2");
+
+        Toast.makeText(WebViewForHomeTab.this, "Loading web site, please wait...", Toast.LENGTH_SHORT).show();
+
+
 
         if (args2.equals("zero1")) {
+
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(0));
 
@@ -56,27 +64,27 @@ public class WebViewForHomeTab extends AppCompatActivity {
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(11));
 
 
-        }else if (args2.equals("zero2")) {
+        } else if (args2.equals("zero2")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(0));
 
 
-        }else if (args2.equals("one2")) {
+        } else if (args2.equals("one2")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(1));
 
 
-        }else if (args2.equals("two2")) {
+        } else if (args2.equals("two2")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(8));
 
 
-        }else if (args2.equals("three2")) {
+        } else if (args2.equals("three2")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(12));
 
 
-        }else if (args2.equals("four2")) {
+        } else if (args2.equals("four2")) {
 
             browser.loadUrl(app.getAllSportsBookTabWebSitesURLS().get(13));
 
@@ -84,7 +92,10 @@ public class WebViewForHomeTab extends AppCompatActivity {
         }
 
 
+
+
     }
+
 
     private class MyBrowser extends WebViewClient {
         @Override

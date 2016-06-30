@@ -50,8 +50,8 @@ public class PromotionsTabListAdapter extends BaseAdapter {
         View v = inflater.inflate(R.layout.listview_layout_for_promotions_tab, parent, false);
 
         ImageView logo = (ImageView) v.findViewById(R.id.htLogoID);
-        TextView mainItem = (TextView) v.findViewById(R.id.htMainItemID);
-        TextView subItem = (TextView) v.findViewById(R.id.htSubItemID);
+        TextView mainItem = (TextView) v.findViewById(R.id.ptMainItemID);
+        TextView subItem = (TextView) v.findViewById(R.id.ptSubItemID);
 
         mainItem.setText(promotionName.get(position));
         subItem.setText(promotionDetails.get(position));
